@@ -1,0 +1,105 @@
+@font-face {
+    font-family: League-Gothic;
+    src: url("../src/font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../src/font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("../src/font/Inter/static/Inter-Bold.ttf");
+}
+
+
+.pai {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: fixed;
+}
+
+.card {
+    height: fit-content;
+    width: fit-content;
+    background-color: #558C03;
+    border-radius: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    font-family: League-Gothic;
+    margin-left: 7%;
+}
+
+
+.titulo {
+    color: white;
+    font-size: 70px;
+}
+
+.botaoCadastro {
+    color: #558C03;
+    font-size: 27px;
+    height: 50px;
+    width: fit-content;
+    background-color: white;
+    border: none;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+}
+
+.formu {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formu legend {
+    text-align: center;
+}
+
+.formu input {
+    height: 30px;
+    width: 300px;
+}
+
+.botaoCadastro button {
+    font-family: InterBold;
+    color: white;
+    padding: 100px;
+
+}
+
+.botaoCadastro:hover {
+    opacity: .7;
+    transition: 300ms;
+}
+.botaoCadastro:focus {
+    outline: 2px solid #333;
+}
+
+.elemento {
+    margin-left: 20%;
+    margin-right: 0%;
+}
+
+.dado {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.dado label {
+    color: inherit;
+    text-align: center;
+    font-size: 24px;
+}
