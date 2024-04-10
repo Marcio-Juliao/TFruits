@@ -7,34 +7,36 @@
     <title>Calculadora - TFruit</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
-    <link rel="import" href="resultado.html">
-    <link rel="stylesheet" href="script.js">
 </head>
 
 <body>
     <main class="pai">
         <section class="card">
-            <form class="formu" method="POST">
+            <form class="formu">
                 <fieldset>
                     <legend class="titulo m-bottom">CALCULADORA</legend>
                     <div class="dado m-b">
                         <Label class="m-y" for="negocio">Nome do Negócio</Label>
-                        <input class="input" style="text-align: center;" type="text" id="negocio" name="negocio">
+                        <input class="input" style="text-align: center;" type="text" id="negocio" name="in_negocio" placeholder="Ex: SPTECH">
                     </div>
                     <div class="dado m-b">
                         <Label class="m-y" for="email">Quanto foi ganho?</Label>
-                        <input class="input" style="text-align: center;" type="number" name="ganho" id="ganho">
+                        <input class="input" style="text-align: center;" type="number" name="ganho" id="in_ganho" placeholder="Ex: 10000">
                     </div>
                     <div class="dado m-b">
                         <Label class="m-y" for="telefone">Quanto foi perdido?</Label>
-                        <input class="input m-bottom" style="text-align: center;" type="number" name="perca" id="perca">
+                        <input class="input m-bottom font1" style="text-align: center;" type="number" name="perca" id="in_perca" placeholder="Ex: 5000">
                     </div>
                 </fieldset>
-                <a href="resultado.html" class="a"><button onclick="calcular()" class="botaoCalcular">RESULTADO</button></a>
-
-
+                <button onclick="calcular()" class="botaoCalcular">RESULTADO</button>
             </form>
         </section>
     </main>
 </body>
 </html>
+<script>
+    function calcular(){
+        var nome = in_negocio.value;
+        alert(nome + " ficou louco por culpa do CSS");
+    }
+</script>

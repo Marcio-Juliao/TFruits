@@ -13,6 +13,17 @@
     src: url("../src/font/Inter/static/Inter-Bold.ttf");
 }
 
+.fonte1{
+    font-family: League-Gothic;
+}
+
+.fonte2 {
+    font-family: Inter;
+}
+
+.fonte3 {
+    font-family: InterBold;
+}
 
 .pai {
     height: 100vh;
@@ -80,21 +91,6 @@
     width: 300px;
 }
 
-.botaoCalcular a {
-    font-family: InterBold;
-    color: white;
-    padding: 100px;
-
-}
-
-.botaoCalcular:hover {
-    opacity: .7;
-    transition: 300ms;
-}
-.botaoCalcular:focus {
-    outline: 2px solid #333;
-}
-
 .elemento {
     margin-left: 20%;
     margin-right: 0%;
@@ -129,3 +125,6 @@
     margin-bottom: 30px;
 }
 
+.resultado{
+    font-family: Inter;
+}
