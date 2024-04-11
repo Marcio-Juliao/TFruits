@@ -30,8 +30,9 @@
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    background-image: url(/TFruits/Site-Institucional-TFruit/src/img/elemento-calculadora.png);
+    align-items: center;
+    /* background-image: url('C:/TFruits/Site-Institucional-TFruit/src/img/elemento-calculadora.png'); */
+    background-image: url('../src/img/elemento-calculadora.png');
     background-position: center;
     background-size: cover;
 }
