@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
 </head>
-
 <body>
     <main class="pai">
         <section class="card">
@@ -29,7 +28,8 @@
                     </div>
                 </fieldset>
                 <button onclick="calcular()" class="botaoCalcular">RESULTADO</button>
-                <div id="resultado" class="resultado" style="text-align: center;"></div>
+                <div id="div_resultado" class="resultado" style="text-align: center;"></div>
+                <div id="div_limpar" style="display: none;"></div>
             </div>
         </section>
     </main>
@@ -37,12 +37,15 @@
 </html>
 <script>
     function calcular(){
+
+        div_limpar.innerHTML = ``;  
+
         var nome = document.getElementById ('in_negocio').value;
         var ganho = parseFloat(document.getElementById('in_ganho').value);
         var perca = parseFloat(document.getElementById('in_perca').value);
         var resultado = ganho - perca;
         
-        document.getElementById('resultado').innerHTML = `Com a TFruits Sr.(a) ${nome},<br>
+        document.getElementById('div_resultado').innerHTML = `Com a TFruits Sr.(a) ${nome},<br>
                                                         você pode reduzir seu danos em até: R$${resultado}`;
     }
 </script>
