@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - TFruit</title>
+    <title>Login - TFruit</title>
     <link rel="stylesheet" href="cadastro.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="../Rebeca/Site TFruit/NavBar_Tfruit.css">
@@ -21,6 +21,7 @@
             <b>Simulador Financeiro</b>|
             <b> Sobre Nós</b>
         </div>
+        
         <div class="EsquerdaNav">
             <b>Login</b>|
             <b>Cadastrar</b>
@@ -28,32 +29,29 @@
     </div>
     <main class="pai">
         <div class="imagem">
-            <img src="../src/img/elemento-cadastro.png" alt="" class="elemento" height="650px">
+            <img src="../src/img/elemento-cadastro.png" alt="" class="elemento" height="600px">
         </div>
         <section class="card">
             <form class="formu">
                 <fieldset>
-                    <legend class="titulo">CADASTRO</legend>
-                    <div class="dado">
-                        <Label for="negocio">Nome do Negócio</Label>
-                        <input type="text" id="negocio" name="negocio">
-                    </div>
+                    <legend class="titulo">L O G I N</legend>
+                   
                     <div class="dado">
                         <Label for="email">Email</Label>
                         <input style="text-align: center;" type="email" name="email" id="email"
                             placeholder="example@mail.com">
                     </div>
-                    <div class="dado">
-                        <Label for="telefone">Telefone</Label>
-                        <input style="text-align: center;" type="tel" name="telefone" id="telefone"
-                            placeholder="(11)99999-9999">
-                    </div>
+                   <br>
                     <div class="dado">
                         <Label for="senha">Senha</Label>
                         <input type="password" id="senha" name="senha">
                     </div>
                 </fieldset>
-                <button onclick="cadastrar()" class="botaoCadastro" type="submit">CADASTRAR</button>
+                <button onclick="entrar()" class="botaoEntrar" type="submit">ENTRAR</button>
+                
+             <div class="cadastro"> 
+                <spam class="texto">Não possui cadastro?</spam> <button onclick="cadastrar()" class="botaoCadastro">Cadastre-se</button> 
+             </div> 
             </form>
         </section>
 
