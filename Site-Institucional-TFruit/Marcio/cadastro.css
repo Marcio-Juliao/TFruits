@@ -103,3 +103,11 @@
     text-align: center;
     font-size: 24px;
 }
+
+.imagem {
+    height: 100vh;
+
+    display: flex;
+    margin-left: 300px;
+    align-items: end;
+}
