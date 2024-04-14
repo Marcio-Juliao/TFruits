@@ -1,1 +1,63 @@
-teste 
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - TFruit</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="../Rebeca/Site TFruit/NavBar_Tfruit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="nav">
+        <div class="DireitaNav">
+            <img src="../Rebeca/Site TFruit/imagens/TFruit_Logo.png" alt="" class="logo">
+            <b>Home</b>|
+            <b>Simulador Financeiro</b>|
+            <b> Sobre Nós</b>
+        </div>
+        <div class="EsquerdaNav">
+            <b>Login</b>|
+            <b>Cadastrar</b>
+        </div>
+    </div>
+    <main class="pai">
+        <div class="imagem">
+            <img src="../src/img/elemento-cadastro.png" alt="" class="elemento" height="650px">
+        </div>
+        <section class="card">
+            <form class="formu">
+                <fieldset>
+                    <legend class="titulo">CADASTRO</legend>
+                    <div class="dado">
+                        <Label for="negocio">Nome do Negócio</Label>
+                        <input type="text" id="negocio" name="negocio">
+                    </div>
+                    <div class="dado">
+                        <Label for="email">Email</Label>
+                        <input style="text-align: center;" type="email" name="email" id="email"
+                            placeholder="example@mail.com">
+                    </div>
+                    <div class="dado">
+                        <Label for="telefone">Telefone</Label>
+                        <input style="text-align: center;" type="tel" name="telefone" id="telefone"
+                            placeholder="(11)99999-9999">
+                    </div>
+                    <div class="dado">
+                        <Label for="senha">Senha</Label>
+                        <input type="password" id="senha" name="senha">
+                    </div>
+                </fieldset>
+                <button onclick="cadastrar()" class="botaoCadastro" type="submit">CADASTRAR</button>
+            </form>
+        </section>
+
+    </main>
+</body>
+
+</html>
