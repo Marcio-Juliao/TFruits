@@ -13,14 +13,26 @@
     src: url("../src/font/Inter/static/Inter-Bold.ttf");
 }
 
+.fonte1{
+    font-family: League-Gothic;
+}
+
+.fonte2 {
+    font-family: Inter;
+}
+
+.fonte3 {
+    font-family: InterBold;
+}
 
 .pai {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    background-image: url(/TFruits/Site-Institucional-TFruit/src/img/Fundo\ calculadora.png);
+    align-items: center;
+    /* background-image: url('C:/TFruits/Site-Institucional-TFruit/src/img/elemento-calculadora.png'); */
+    background-image: url('../src/img/elemento-calculadora.png');
     background-position: center;
     background-size: cover;
 }
@@ -60,6 +72,10 @@
     text-decoration: none;
 }
 
+.a {
+    text-decoration: none;
+}
+
 .formu {
     padding: 50px;
     display: flex;
@@ -74,21 +90,6 @@
 .formu input {
     height: 30px;
     width: 300px;
-}
-
-.botaoCalcular a {
-    font-family: InterBold;
-    color: white;
-    padding: 100px;
-
-}
-
-.botaoCalcular:hover {
-    opacity: .7;
-    transition: 300ms;
-}
-.botaoCalcular:focus {
-    outline: 2px solid #333;
 }
 
 .elemento {
@@ -125,3 +126,6 @@
     margin-bottom: 30px;
 }
 
+.resultado{
+    font-family: Inter;
+}
