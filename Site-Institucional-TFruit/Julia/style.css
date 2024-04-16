@@ -21,7 +21,10 @@ h1{
 }
 .banner {
     background-image: url("frutas.jpg");
+    background-size: 100%;
     background-color: azure;
+   height: 400px;
+    width: 100%;
 }
 
 .banner .container {
