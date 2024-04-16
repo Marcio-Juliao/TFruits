@@ -1,9 +1,13 @@
-body{
-    margin: 0;
-}
-b{
-    font-family: "Inter";
+a{
+    font-family: "InterBold";
     color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    font-family: "InterBold";
+    color: rgb(0, 113, 2);
+    text-decoration: underline;
     
 }
 .nav {
