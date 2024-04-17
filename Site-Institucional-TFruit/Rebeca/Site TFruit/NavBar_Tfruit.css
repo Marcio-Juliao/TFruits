@@ -6,6 +6,12 @@ b{
     color: white;
     
 }
+b:hover{
+    font-family: "Inter";
+    color: #203204;
+    text-decoration: underline;
+    
+}
 .nav {
     position: fixed;
     display: flex;

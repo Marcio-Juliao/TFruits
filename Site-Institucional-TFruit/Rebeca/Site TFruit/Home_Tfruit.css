@@ -20,14 +20,16 @@ button{
     align-items: center;
 }
 .banner1 {
-    background-color: #F27405;
+    background-image: url(imagens/1.png);
+    background-size: 100%;
     width: 500px;
-    height: 290px;
+    height: 340px;
 }
 .banner2 {
-    background-color: #F20505;
+    background-image: url(imagens/2.png);
+    background-size: 100%;
     width: 500px;
-    height: 290px;
+    height: 340px;
 }
 
 .QuemSomos {
