@@ -36,12 +36,13 @@
 .card {
     font-family: League-Gothic;
     margin-left: 7%;
+    margin-top: 7%;
 }
 
 
 .titulo {
     color: white;
-    font-size: 70px;
+    font-size: 60px;
 }
 
 .botaoCadastro {
@@ -122,11 +123,13 @@ fieldset {
     display: flex;
     text-align: center;
     justify-content: center;
+    flex-direction: column;
 
 }
 
 .card-info span {
     color: #F28505;
     font-family: InterBold;
+    font-size: 30px;
     
 }
