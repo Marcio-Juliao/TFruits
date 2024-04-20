@@ -133,3 +133,20 @@ fieldset {
     font-size: 30px;
     
 }
+
+.botaoCalcular{
+    color: #F29F05;
+    font-size: 27px;
+    height: 50px;
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: white;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 10px;
+    border: #ca8504 solid 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+}

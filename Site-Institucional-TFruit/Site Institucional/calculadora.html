@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - TFruit</title>
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="reset.css">
+</head>
+    <link rel="stylesheet" href="NavBar_Tfruit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head> 
+<body>
+
+
+    <div class="nav">
+        <div class="DireitaNav">
+            <img src="../Site Institucional/imagens/TFruit_Logo.png" class="logo">
+            <a href="Home TFruit.html">Home</a>|
+            <b class="b">Simulador Financeiro</b>|
+            <a href="Quem_somos.html"> Sobre Nós</a>
+        </div>
+        
+        <div class="EsquerdaNav">
+            <a href="login.html">Login</a>|
+            <a href="cadastro.html">Cadastrar</a>
+        </div>
+    </div>
+
+
+    <main class="pai">
+        <section class="card">
+            <div class="formu">
+                <fieldset>
+                    <legend class="titulo m-bottom">CALCULADORA</legend>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="negocio">Nome do Negócio</Label>
+                        <input class="input" style="text-align: center;" type="text" id="in_negocio"
+                            placeholder="Ex: SPTECH">
+                    </div>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="email">Quanto foi ganho?</Label>
+                        <input class="input" style="text-align: center;" type="number" id="in_ganho"
+                            placeholder="Ex: 10000">
+                    </div>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="telefone">Quanto foi perdido?</Label>
+                        <input class="input m-bottom font1" style="text-align: center;" type="number" id="in_perca"
+                            placeholder="Ex: 5000">
+                    </div>
+                </fieldset>
+                <button onclick="calcular()" class="botaoCalcular">RESULTADO</button>
+                <div id="div_resultado" class="resultado" style="text-align: center;"></div>
+                <div id="div_limpar" style="display: none;"></div>
+            </div>
+            
+        </section>
+    </main>
+</body>
+
+</html>
+<script>
+    function calcular() {
+
+        div_limpar.innerHTML = ``;
+
+        var nome = document.getElementById('in_negocio').value;
+        var ganho = parseFloat(document.getElementById('in_ganho').value);
+        var perda = parseFloat(document.getElementById('in_perca').value);
+        var resultado = perda * 0.4;
+
+        document.getElementById('div_resultado').innerHTML = `
+        <span class="fonte2">
+        <br>A empresa ${nome}, que perde R$${perda} mensalmente pela falta de monitoramento de temperatura,
+        <br>(que se converte em R$${perda * 12} anualmente)
+        <br>poderá reduzir suas perdas em até 40% utilizando TFruit, sendo: R$${resultado} economizados todos os meses.
+        <br>(sendo R$${(resultado * 12).toFixed(2)} anualmente)
+        </span>
+        `;
+
+    }
+</script>

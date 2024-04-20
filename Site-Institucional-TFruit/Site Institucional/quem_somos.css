@@ -1,3 +1,31 @@
+@font-face {
+    font-family: League-Gothic;
+    src: url("../src/font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../src/font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("../src/font/Inter/static/Inter-Bold.ttf");
+}
+
+.fonte1{
+    font-family: League-Gothic;
+}
+
+.fonte2 {
+    font-family: Inter;
+    color: #fff;
+}
+
+.fonte3 {
+    font-family: InterBold;
+}
+
 p{
     font-family: "Inter";
     font-size: 25px;

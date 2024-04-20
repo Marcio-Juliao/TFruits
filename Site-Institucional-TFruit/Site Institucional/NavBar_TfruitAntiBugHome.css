@@ -6,10 +6,17 @@ a{
 
 a:hover{
     font-family: "InterBold";
-    color: rgb(0, 113, 2);
+    color: #203204;
     text-decoration: underline;
     
 }
+
+b{
+    font-family: "InterBold";
+    text-decoration: none;
+    color: #203204
+}
+
 .nav {
     position: fixed;
     display: flex;
@@ -20,6 +27,8 @@ a:hover{
     height: 80px;
     background-color: #558C03;
     font-size: 20px;
+    margin-top: -8px;
+    margin-left: -8px;
 
 }
 .DireitaNav {
