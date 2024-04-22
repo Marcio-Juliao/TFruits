@@ -23,6 +23,15 @@
     position: fixed;
 }
 
+.pai a {
+    color:#F28505;
+}
+.pai a:hover{
+    font-family: "InterBold";
+    color: white;
+    background-color: #F28505;
+}
+
 .card {
     height: fit-content;
     width: fit-content;
