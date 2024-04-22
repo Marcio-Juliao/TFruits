@@ -15,14 +15,13 @@
 
 
 .pai {
-    height: 100vh;
-    width: 100vw;
+    height: 700px;
+    width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
     position: fixed;
 }
-
 .card {
     height: fit-content;
     width: fit-content;
@@ -105,7 +104,7 @@
 }
 
 .imagem {
-    height: 100vh;
+    height: 580px;
 
     display: flex;
     margin-left: 300px;
