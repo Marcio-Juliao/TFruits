@@ -26,19 +26,19 @@
     font-family: InterBold;
 }
 
-a{
+.nav a{
     font-family: "InterBold";
     color: white;
     text-decoration: none;
 }
 
-b{
+.nav b{
     font-family: "InterBold";
     text-decoration: none;
     color: #203204
 }
 
-a:hover{
+.nav a:hover{
     font-family: "InterBold";
     color: #203204;
     text-decoration: underline;

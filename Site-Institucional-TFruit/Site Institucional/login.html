@@ -7,7 +7,7 @@
     <title>Login - TFruit</title>
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="NavBar_Tfruit.css">
+    <link rel="stylesheet" href="NavBar_TfruitAntiBugHome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -30,13 +30,13 @@
     </div>
 
 
-    <main class="pai">
+    <div class="pai">
         <div class="imagem">
             <img src="../src/img/elemento-cadastro.png" alt="" class="elemento" height="600px">
         </div>
-        <section class="card">
-            <form class="formu">
-                <fieldset>
+        <div class="card">
+            <div class="formu">
+                <div>
                     <legend class="titulo">L O G I N</legend>
                    
                     <div class="dado">
@@ -49,16 +49,17 @@
                         <Label for="senha">Senha</Label>
                         <input type="password" id="senha" name="senha">
                     </div>
-                </fieldset>
+                </div>
                 <button onclick="entrar()" class="botaoEntrar" type="submit">ENTRAR</button>
                 
              <div class="cadastro"> 
-                <span class="texto">Não possui cadastro?</span> <button onclick="cadastrar()" class="botaoCadastro">Cadastre-se</button> 
+                <span class="texto">Não possui cadastro?</span> <button onclick="cadastrar()" class="botaoCadastro" id="cadastro"><a href="cadastro.html"> Cadastre-se </a></button> 
              </div> 
-            </form>
-        </section>
+            </div>
+        </div>
 
-    </main>
+    </div>
 </body>
 
 </html>
+

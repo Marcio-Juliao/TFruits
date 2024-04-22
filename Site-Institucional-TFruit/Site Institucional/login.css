@@ -22,6 +22,9 @@
     align-items: center;
     position: fixed;
 }
+.pai a{
+    color: #A60303;
+}
 
 .card {
     height: fit-content;
