@@ -48,7 +48,7 @@
                     </div>
                     <div class="dado m-b">
                         <Label class="m-y" for="telefone">Quanto foi perdido?</Label>
-                        <input class="input m-bottom font1" style="text-align: center;" type="number" id="in_perca"
+                        <input class="input m-bottom font1" style="text-align: center;" type="number" id="in_perda"
                             placeholder="Ex: 5000">
                     </div>
                 </fieldset>
@@ -69,7 +69,7 @@
 
         var nome = document.getElementById('in_negocio').value;
         var ganho = parseFloat(document.getElementById('in_ganho').value);
-        var perda = parseFloat(document.getElementById('in_perca').value);
+        var perda = parseFloat(document.getElementById('in_perda').value);
         var resultado = perda * 0.4;
 
         document.getElementById('div_resultado').innerHTML = `
