@@ -7,7 +7,8 @@
     <title>Cadastro - TFruit</title>
     <link rel="stylesheet" href="Pós_Cadastro.css">
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="NavBar_TfruitPósCadastro.css">
+    <link rel="stylesheet" href="NavBar_Tfruit.css">
+    <link rel="stylesheet" href="footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -17,31 +18,47 @@
 
 
     <div class="nav">
-        <div class="logo2">
-            <img src="../Site Institucional/imagens/TFruit_Logo.png">
+        <div class="DireitaNav">
+            <img src="../Site Institucional/imagens/TFruit_Logo.png" class="logo">
+            <a href="Home TFruit.html">Home</a>|
+            <a href="calculadora.html">Simulador Financeiro</a>|
+            <a href="Quem_somos.html"> Sobre Nós</a>
+        </div>
+        
+        <div class="EsquerdaNav">
+            <a href="login.html">Login</a>|
+            <b class="b">Cadastrar</b>
         </div>
     </div>
 
 
-    <main class="pai">
+    <div class="pai">
         <section class="card">
-            <div class="formu">
+            <form class="formu">
                 <fieldset>
-                    <legend class="titulo">Espere entrarmos <br> em contato para <br> liberar seu login!</legend>
+                    
+                    <legend class="titulo">Espere entrarmos em contato para liberar seu login!</legend>
+                      
+                  <br>
                     <div class="card-info">
-                        <span>Obrigado pelo <br> interesse na</span>
+                        <span><b>Obrigado pelo  interesse na</b></span>
                         <div>
-                            <img src="../src/img/elemento-posCadastro.png" alt="" height="75px">
+                            <img src="../src/img/elemento-posCadastro.png" >
                         </div>
-                    </div>
                 </fieldset>
-                <a href="Home TFruit.html" class="botaoCalcular">VOLTAR PARA HOME</a>
-            </div>
+               
+                <button class="botaoCadastro"><a href="Home TFruit.html" class="botaoCalcular">VOLTAR PARA HOME</a></button>
+                                    </form>
         </section>
         <div class="imagem">
             <img src="../src/img/elemento-cadastro.png" alt="" class="elemento" height="600px">
         </div>
-    </main>
+    </div>
+    <div class="footer"> 
+        <p> @TFruit2024 </p>
+        
+        <p>tfruit@sptech.school</p>
+    </div>
 </body>
 
 </html>
