@@ -54,7 +54,9 @@
     font-family: InterBold;
     border-radius: 5px;
 }
-
+.botaoCadastro a{
+    color: #558C03;
+}
 .formu {
     padding: 50px;
     display: flex;
