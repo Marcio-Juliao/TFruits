@@ -1,6 +1,9 @@
 /*css do footer div*/
+body{
+    margin: 0;
+}
 .footer{
-    width: 1493px;
+    width: 100%;
     height: 100px;
     background-color:  #558C03;;
     display: flex;

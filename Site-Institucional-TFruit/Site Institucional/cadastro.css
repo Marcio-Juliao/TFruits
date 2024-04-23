@@ -15,12 +15,12 @@
 
 
 .pai {
-    height: 700px;
+    height: 680px;
     width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    position: fixed;
+   
 }
 .card {
     height: fit-content;
