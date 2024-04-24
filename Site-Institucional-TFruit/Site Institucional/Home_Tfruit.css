@@ -87,3 +87,6 @@ button{
     justify-content: space-evenly;
     align-items: center;
 }
+.texto a{
+    color: white;
+}
