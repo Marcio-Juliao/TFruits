@@ -27,8 +27,8 @@
 }
 
 .pai {
-    height: 100vh;
-    width: 100vw;
+    height: 700px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,8 +39,8 @@
 }
 
 .card {
-    height: fit-content;
-    width: fit-content;
+    height: 600px;
+    width: 600px;
     background-color: #F29F05;
     border: #ca8504 solid 5px;
     border-radius: 10px 10px 10px;
