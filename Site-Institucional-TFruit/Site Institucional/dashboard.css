@@ -1,0 +1,71 @@
+@font-face {
+    font-family: League-Gothic;
+    src: url("../src/font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../src/font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("../src/font/Inter/static/Inter-Bold.ttf");
+}
+
+.fonte1{
+    font-family: League-Gothic;
+}
+
+.fonte2 {
+    font-family: Inter;
+    color: #fff;
+}
+
+.fonte3 {
+    font-family: InterBold;
+    
+}
+
+.pai {
+    height: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+}
+
+.card {
+    height: 500px;
+    width: 500px;
+    background-color: #F29F05;
+    border: #ca8504 solid 5px;
+    border-radius: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: League-Gothic;
+    margin: 10px 10px 10px 10px;
+}
+
+.card2 {
+    height: 500px;
+    width: 500px;
+    background-color: #F29F05;
+    border: #ca8504 solid 5px;
+    border-radius: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: League-Gothic;
+    margin: 10px 10px 10px 10px;
+}
+.imagem{
+    width: 70px;
+    height: 70px;
+
+}
+
+
