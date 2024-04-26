@@ -18,7 +18,6 @@
     height: 700px;
     width: 100%;
     display: flex;
-    justify-content: start;
     align-items: center;
    
 }
@@ -30,15 +29,16 @@
     height: fit-content;
     width: fit-content;
     background-color: #A60303;
-    border-radius: 10px 10px 10px;
+    border: #700202 solid 5px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 150px;
 }
 
 .card {
-    font-family: League-Gothic;
-    margin-left: 7%;
+    font-family: League-Gothic;;
 }
 
 
@@ -53,7 +53,7 @@
     height: 50px;
     width: fit-content;
     background-color: white;
-    border: none;
+    border: #700202 solid 5px;
     margin-top: 15px;
     font-family: InterBold;
     border-radius: 5px;
@@ -65,10 +65,11 @@
     width: fit-content;
     height: fit-content;
     background-color: white;
-    border: none;
+    border: #700202 solid 5px;
     margin-top: 15px;
     font-family: InterBold;
     border-radius: 5px;
+    margin-top: 20px;
 }
 
 .cadastro {
@@ -120,14 +121,20 @@
 }
 
 .elemento {
-    margin-left: 20%;
-    margin-right: 0%;
+    margin-left: 25px;
+    margin-bottom: -50px;
+    margin-right: 20px;
 }
 
 .dado {
     display: flex;
     flex-direction: column;
     color: #fff;
+}
+
+.dado input{
+    border: #700202 solid 2px;
+    border-radius: 10px;
 }
 
 
@@ -163,9 +170,8 @@
 
 .imagem {
     height:600px;
-
+    margin-left: -50px;
     display: flex;
-    margin-right: 300px;
     align-items: end;
 }
 .imagem img{
@@ -179,4 +185,8 @@ fieldset {
 
 .botaoCadastro {
     margin-left: 30px;
+}
+
+.cadastro span{
+    margin-bottom: 9px;
 }

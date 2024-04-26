@@ -26,6 +26,7 @@
     height: fit-content;
     width: fit-content;
     background-color: #558C03;
+    border: #3b6102 solid 5px;
     border-radius: 10px 10px 10px;
     display: flex;
     justify-content: center;
@@ -38,6 +39,10 @@
 }
 
 
+.divscroll{
+    overflow: auto;
+}
+
 .titulo {
     color: white;
     font-size: 70px;
@@ -49,13 +54,17 @@
     height: 50px;
     width: fit-content;
     background-color: white;
-    border: none;
+    border: #3b6102 solid 5px;
+    border-radius: 10px;
     margin-top: 15px;
     font-family: InterBold;
     border-radius: 5px;
+    text-decoration: none;
+    
 }
 .botaoCadastro a{
-    color: #558C03;
+    color: #3b6102;
+    text-decoration: none;
 }
 .formu {
     padding: 50px;
@@ -89,14 +98,20 @@
 }
 
 .elemento {
-    margin-left: 20%;
-    margin-right: 0%;
+    margin-left: 8px;
+    margin-bottom: -50px;
+    margin-right: 20px;
 }
 
 .dado {
     display: flex;
     flex-direction: column;
     color: #fff;
+}
+
+.dado input{
+    border: #3b6102 solid 2px;
+    border-radius: 10px;
 }
 
 .dado label {
