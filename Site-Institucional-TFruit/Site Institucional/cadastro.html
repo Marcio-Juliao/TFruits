@@ -70,7 +70,7 @@
                     <div class="dado">
                         <Label for="complemento">Complemento</Label>
                         <input style="text-align: center;" type="text" id="complemento" name="complemento"
-                            placeholder="Andar 0/Apto. 0">
+                            placeholder="Andar 0">
                     </div>
                 </fieldset>
                
@@ -87,5 +87,19 @@
         <p>tfruit@sptech.school</p>
     </div>
 </body>
-
 </html>
+<script>
+    var nome = negocio.value;
+    var email = email.value;
+    var tel = telefone.value;
+    var cnpj = cnpj.value;
+    var cep = cep.value;
+    var nmr = nmr.value;
+    var comp = complemento.value
+
+    function cadastro(){
+        if(nome == "" || email == "" || tel == "" || cnpj == "" || cep == "" || nmr == ""){
+            alert(`Preencha todos os campos`);
+        }
+    }
+</script>

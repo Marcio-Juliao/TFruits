@@ -102,6 +102,11 @@
     font-family: InterBold;
     color: white;
     padding: 15px;
+    text-decoration: none;
+}
+
+.botaoCadastro a{
+    text-decoration: none;
 }
 
 .botaoEntrar button {
@@ -109,6 +114,10 @@
     color: white;
     padding: 100px;
 
+}
+
+.botaoEntrar:hover{
+    opacity: 50%;
 }
 
 .botaoCadastro:hover {

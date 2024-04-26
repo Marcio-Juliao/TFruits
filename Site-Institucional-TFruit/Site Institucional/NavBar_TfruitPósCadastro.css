@@ -42,6 +42,7 @@ a:hover{
     font-family: "InterBold";
     color: #203204;
     text-decoration: underline;
+    opacity: 50%;
     
 }
 .nav {

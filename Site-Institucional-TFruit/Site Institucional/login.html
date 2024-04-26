@@ -41,13 +41,13 @@
                    
                     <div class="dado">
                         <Label for="email">Email</Label>
-                        <input style="text-align: center;" type="email" name="email" id="email"
+                        <input style="text-align: center;" type="text" name="email" id="input_email"
                             placeholder="example@mail.com">
                     </div>
                    <br>
                     <div class="dado">
                         <Label for="senha">Senha</Label>
-                        <input style="text-align: center;" type="password" id="senha" name="senha"
+                        <input style="text-align: center;" type="text" id="input_senha" name="senha"
                             placeholder="***********">
                     </div>
                 </div>
@@ -68,4 +68,16 @@
 </body>
 
 </html>
+<script>
+    function entrar(){
+        var mail = input_email.value;
+        var passwd = input_senha.value;
+        if(mail == "brandao@sptech.school" && passwd == "12345"){
+            alert(`Welcome to the mato`);
+        }else{
+            alert(`Email ou Senha Incorretos`); 
+        }
+    }
+
+</script>
 
