@@ -1,3 +1,10 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @font-face {
     font-family: League-Gothic;
     src: url("../src/font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
@@ -13,59 +20,161 @@
     src: url("../src/font/Inter/static/Inter-Bold.ttf");
 }
 
-.fonte1{
-    font-family: League-Gothic;
-}
+.nav{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border-bottom: #F29F05 solid 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.fonte2 {
-    font-family: Inter;
-    color: #fff;
 }
-
-.fonte3 {
+.nav .dashboard{
+    color: white;
+    background-color: #F27405;
+    border: #F27405 solid 5px ;
+    border-radius: 20px;
+    width: 140px;
+    height: 40px;
     font-family: InterBold;
+    font-size: 17px;
+}
+.nav .sair{
+   
+    background-color: white;
+    border: #A60303 solid 2px ;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+   
+}
+.nav .sair a{
+     font-family: InterBold;
+     font-size: 17px;
+     color: #A60303;
+}
+.nav .nav_esquerda{
+    height: 100%;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav .nav_direita {
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: Inter;
+    text-align: center;
+}
+.nav .nav_direita img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+}
+
+
+.infos{
+    width: 100%;
+    height: 250px;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.top{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.top .sensores{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: InterBold;
+    font-size: 15px;
+}
+.top .sensores select{
+    color: white;
+    background-color: #F29F05;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    text-align: center;
+}
+.top .Temperatura{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: InterBold;
+    text-align: center;
+    font-size: 15px; 
+}
+.top .Temperatura .style_temp{
+    color: white;
+    background-color: #F29F05;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .tempo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    font-family: InterBold;
+    text-align: center;
+    font-size: 15px; 
+}
+.top .tempo .style_tempo{
+    color: black;
+    background-color: white;
+    border: #F27405 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 37px;
+    font-family: InterBold;
+    font-size: 13px;
     
 }
 
-.pai {
-    height: 700px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    background-size: cover;
-}
-
-.card {
-    height: 500px;
-    width: 500px;
+.result{
+    color: white;
     background-color: #F29F05;
-    border: #ca8504 solid 5px;
-    border-radius: 10px 10px 10px;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-family: League-Gothic;
-    margin: 10px 10px 10px 10px;
+    justify-content: center;
 }
 
-.card2 {
-    height: 500px;
-    width: 500px;
-    background-color: #F29F05;
-    border: #ca8504 solid 5px;
-    border-radius: 10px 10px 10px;
+.dispositivos{
+    width: 99%;
+    height: 40px;
+    background-color:white;
+    border: #558C03 solid 3px;
+    color: #558C03;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-family: League-Gothic;
-    margin: 10px 10px 10px 10px;
+    font-family: InterBold;
+    font-size: 15px;
 }
-.imagem{
-    width: 70px;
-    height: 70px;
-
-}
-
 
