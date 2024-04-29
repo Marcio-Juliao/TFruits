@@ -31,12 +31,15 @@ body{
 
 }
 .nav .dashboard{
-    color: white;
-    background-color: #F27405;
-    border: #F27405 solid 5px ;
+    background-color: white;
+    border: #F27405 solid 2px ;
     border-radius: 20px;
     width: 140px;
     height: 40px;
+    
+}
+.nav .dashboard a{
+    color: #F27405;
     font-family: InterBold;
     font-size: 17px;
 }
@@ -55,8 +58,8 @@ body{
      color: #A60303;
 }
 .nav .cadastrar{
-    background-color: white;
-    border: #F27405 solid 2px ;
+    background-color: #F27405;
+    border: #F27405 solid 5px ;
     border-radius: 20px;
     width: 120px;
     height: 40px;
@@ -65,7 +68,7 @@ body{
 .nav .cadastrar a{
     font-family: InterBold;
      font-size: 17px;
-     color: #F27405;
+     color: white;
 }
 .nav .nav_esquerda{
     height: 100%;
@@ -89,108 +92,57 @@ body{
     border-radius: 50px;
 }
 
-
-.infos{
+.corpo{
     width: 100%;
-    height: 250px;
-    background-color:white;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.corpo .esquerda{
+    width: 40%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
 }
-.top{
+.corpo .esquerda .funcionário{
     width: 100%;
+    height: 40%;
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
 }
-.top .sensores{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: InterBold;
-    font-size: 15px;
-}
-.top .sensores select{
-    color: white;
+.corpo .esquerda .funcionário button{
+    width: 450px;
+    height: 50px;
     background-color: #F29F05;
-    border: #d88407 solid 3px ;
-    border-radius: 20px;
-    width: 160px;
-    height: 40px;
-    font-family: InterBold;
-    font-size: 13px;
-    text-align: center;
-}
-.top .Temperatura{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: InterBold;
-    text-align: center;
-    font-size: 15px; 
-}
-.top .Temperatura .style_temp{
+    border: #F29F05 solid 2px;
+    border-radius: 10px;
     color: white;
-    background-color: #F29F05;
-    border: #d88407 solid 3px ;
-    border-radius: 20px;
-    width: 160px;
-    height: 30px;
-    font-family: InterBold;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.top .tempo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-    font-family: InterBold;
-    text-align: center;
-    font-size: 15px; 
-}
-.top .tempo .style_tempo{
-    color: black;
-    background-color: white;
-    border: #F27405 solid 3px ;
-    border-radius: 20px;
-    width: 160px;
-    height: 37px;
-    font-family: InterBold;
-    font-size: 13px;
-    
-}
-
-.result{
-    color: white;
-    background-color: #F29F05;
-    border: #d88407 solid 3px ;
-    border-radius: 20px;
-    width: 160px;
-    height: 40px;
-    font-family: InterBold;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dispositivos{
-    width: 99.5%;
-    height: 40px;
-    background-color:rgba(85, 140, 3, 0.1);
-    border: #558C03 solid 3px;
-    color: #558C03;
-    display: flex;
-    align-items: center;
     font-family: InterBold;
     font-size: 20px;
+    text-align: start;
 }
-
+.corpo .esquerda .cadastrar{
+    width: 400px;
+    height: 50px;
+    background-color: #558C03;
+    border: #558C03 solid 2px;
+    border-radius: 10px;
+    color: white;
+    font-family: InterBold;
+    font-size: 20px;
+    text-align: start;
+}
+.corpo .direita{
+    width: 55%;
+    height: 100%;
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .footer{
     width: 100%;
     height: 90px;
@@ -204,4 +156,3 @@ body{
     width: 120px;
     height: 60px;
 }
-
