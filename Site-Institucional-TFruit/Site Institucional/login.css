@@ -130,9 +130,9 @@
 }
 
 .elemento {
-    margin-left: 25px;
+    margin-left: 100px;
     margin-bottom: -50px;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .dado {
@@ -179,7 +179,7 @@
 
 .imagem {
     height:600px;
-    margin-left: -50px;
+    /* margin-left: -50px; */
     display: flex;
     align-items: end;
 }
