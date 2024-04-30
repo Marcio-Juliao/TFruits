@@ -73,9 +73,14 @@
         var mail = input_email.value;
         var passwd = input_senha.value;
         if(mail == "brandao@sptech.school" && passwd == "12345"){
-            alert(`Welcome to the mato`);
+            alert(`BEM VINDO A TFRUIT!`);
+            window.location.href="dashboard_adm.html"
+        }
+        else if (mail == "julia@sptech.school" && passwd == "123") {
+            alert(`BEM VINDO A TFRUIT!`);
             window.location.href="dashboard.html"
-        }else{
+        }
+        else{
             alert(`Email ou Senha Incorretos`); 
         }
     }
