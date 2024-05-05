@@ -82,13 +82,14 @@
         var perda = total * 0.4;
         var ganho_final = total - perda;
         var garantia = perda / 2;
+        var ganho_tfruit = ganho_final + garantia;
 
         document.getElementById('div_resultado').innerHTML = `
         <span class="fonte2">
         <br>A empresa ${nome}, deveria obter um ganho de R$${total}. Porém, devido as perdas ocasionadas pelo transporte inadequado do seu produto com a temperatura incorreta, a ${nome} sofre com uma perda de R$${perda}, tendo um ganho final de R$${ganho_final} .<br><br> 
         Ao olhar para o 1º mês, essa perda não parece significante. Mas se olharmos para um cenário de 6 meses, estamos falando de um valor de R$${perda * 6} que deixa de entrar na empresa.<br><br>
 
-        Com a Tfruit, a ${nome} teria um ganho de até ${garantia } a mais. Isso porque com o nosso serviço, garantimos que pelo menos 50% da sua perda será evitada. Resultando um ganho final de R$${total + garantia} . <br><br>
+        Com a Tfruit, a ${nome} teria um ganho de até ${garantia } a mais. Isso porque com o nosso serviço, garantimos que pelo menos 50% da sua perda será evitada. Resultando um ganho final de pelo menos R$${ganho_tfruit} . <br><br>
 
         Em um cenário de 6 meses, estariamos evitando uma perda de no mínimo R${garantia * 6} , agregando R$${total + (garantia * 6)} na receita financeira. `;
 
