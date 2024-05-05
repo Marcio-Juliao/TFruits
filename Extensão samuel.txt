@@ -1,5 +1,0 @@
-Extensões
-
-vscode-pets
-vscode-icons
-shades of purple
