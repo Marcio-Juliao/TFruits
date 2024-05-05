@@ -51,7 +51,9 @@
             <div class="Temperatura">
                 Temperatura 
                 nesse exato momento 
-                <div class="style_temp" id="temperatura"></div>
+                <div id="temperatura">
+                    <div class="style_temp_alerta"></div>
+                </div>
             </div>
             <div class="tempo">
                 última atualização
@@ -79,7 +81,9 @@
             </div>
             <div class="elemento_2">
                 Temperatura Média <br> Diária
-                <div class="result" id="temp"></div>
+                <div id="temp">
+                <div class="result_alerta"></div>
+                </div>
             </div>
             <div class="elemento_3">
                 <div class="perigo">🔴 perigo</div>
@@ -135,30 +139,32 @@ showTimeNow()
 setInterval(showTimeNow, 1000);
 
 function result() {
-    
 
     var sensor = sensor_select.value
 
     disp.innerHTML = ` Dispositivo ${sensor} `
 
     if (sensor == 1 || sensor == 2 || sensor == 4 || sensor == 5 || sensor == 8 ||sensor == 9 ) {
-        temperatura.innerHTML = '17°'
-        temp.innerHTML = `${(16 + 17) / 2}`
+        temperatura.innerHTML = '<div class="style_temp_perigo">20°</div>'
+        temp.innerHTML = `<div class="result_perigo">${(17 + 20) / 2}</div>`
+        
     }
     else if(sensor == "#"){
         temperatura.innerHTML = ""
+        temp.innerHTML = ""
     }
     else if (sensor == "all") {
-        temperatura.innerHTML = `média de : ${(16 + 17) / 2} `
+        temperatura.innerHTML = `<div class="style_temp_alerta">média de : ${(12 + 17) / 2}</div> `
+        temp.innerHTML = `<div class="result_alerta">${(12 + 17) / 2}</div>`
     }
     else{
-        temperatura.innerHTML = '16°'
-        temp.innerHTML = `${(16 + 17) / 2}`
+        temperatura.innerHTML = '<div class="style_temp_ok">12°</div>'
+        temp.innerHTML = `<div class="result_ok">${(12 + 12) / 2}</div>`
     }
 
 }
 
-const labels = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'];
+const labels = ['04', '05', '06', '07', '08', '09'];
 
 const data = {
     labels: labels,

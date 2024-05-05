@@ -131,10 +131,36 @@ body{
     text-align: center;
     font-size: 15px; 
 }
-.top .Temperatura .style_temp{
+.top .Temperatura .style_temp_alerta{
     color: white;
     background-color: #F29F05;
     border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .Temperatura .style_temp_ok{
+    color: white;
+    background-color: #558C03;
+    border: #477905 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .Temperatura .style_temp_perigo{
+    color: white;
+    background-color: #A60303;
+    border: #7e0707 solid 3px ;
     border-radius: 20px;
     width: 160px;
     height: 30px;
@@ -167,8 +193,47 @@ body{
 
 .result{
     color: white;
+    background-color: #F27405;
+    border: #eb5b08 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_alerta{
+    color: white;
     background-color: #F29F05;
     border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_ok{
+    color: white;
+    background-color: #558C03;
+    border: #477905 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_perigo{
+    color: white;
+    background-color: #A60303;
+    border: #7e0707 solid 3px ;
     border-radius: 20px;
     width: 160px;
     height: 40px;
