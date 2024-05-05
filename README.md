@@ -8,4 +8,7 @@ Programamos um sensor de temperatura com uma variação adequada para a locomoç
 
 Nós da Tfruit prezamos pela excelência em nosso serviço, uma vez que alimentos são essenciais no dia a dia da sociedade brasileira. Sendo assim, sabendo que são entregues de forma eficiente, faz com que pessoas tenham prazer em consumir. Consequentemente, aumenta o seu número de vendas, gerando maior ganho em sua receita. Dessa maneira, o controle de temperatura durante a viagem dos produtos, em suma, potencializa o faturamento de sua empresa.
 
+<p align="center">
+  <img src="(https://github.com/Marcio-Juliao/TFruits/assets/160528743/a71b61a0-7ca6-4a5b-8045-1d7fe2fb8b87)">
+</p>
 ![image](https://github.com/Marcio-Juliao/TFruits/assets/160528743/a71b61a0-7ca6-4a5b-8045-1d7fe2fb8b87)
