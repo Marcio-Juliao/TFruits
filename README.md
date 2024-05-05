@@ -11,4 +11,5 @@ Nós da Tfruit prezamos pela excelência em nosso serviço, uma vez que alimento
 <p align="center">
   <img src="(https://github.com/Marcio-Juliao/TFruits/assets/160528743/a71b61a0-7ca6-4a5b-8045-1d7fe2fb8b87)">
 </p>
+
 ![image](https://github.com/Marcio-Juliao/TFruits/assets/160528743/a71b61a0-7ca6-4a5b-8045-1d7fe2fb8b87)
