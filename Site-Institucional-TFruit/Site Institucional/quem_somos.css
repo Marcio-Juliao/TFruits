@@ -48,7 +48,7 @@ h1{
     
 }
 .banner {
-    background-image: url("frutas.jpg");
+    background-image: url("bannerFrutas.jpg");
     background-size: 100%;
     background-color: azure;
    height: 400px;
@@ -104,4 +104,9 @@ b{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+.texto {
+    font-family: Inter;
+    font-size: 18px;
 }
