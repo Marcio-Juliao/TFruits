@@ -17,6 +17,7 @@
         <div class="nav_esquerda">
         <button class="sair"><a href="Home TFruit.html">sair</a></button>
         <button class="dashboard">dashboard</button>
+        <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
         <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
         </div>
         <div class="nav_direita">
@@ -65,6 +66,9 @@
             </div>    
         </div>
         <button class="result" onclick="result()">mostrar resultados</button>
+        <div id="alerta">
+            <p></p>
+        </div>
     </div>
     <!--informações especifícas-->
     <div class="dispositivos" id="disp">
@@ -162,6 +166,10 @@ function result() {
         temperatura.innerHTML = '<div class="style_temp_ok">12°</div>'
         temp.innerHTML = `<div class="result_ok">${(12 + 12) / 2}</div>`
     }
+
+    setTimeout(() => {
+        alerta.innerHTML =`<p> 🔴 Caixa ${sensor} - está em perigo! Está com 20º!</p>`
+    }, 1000);
 
 }
 

@@ -69,7 +69,7 @@ body{
 }
 .nav .nav_esquerda{
     height: 100%;
-    width: 500px;
+    width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -254,6 +254,13 @@ body{
     align-items: center;
     font-family: InterBold;
     font-size: 20px;
+}
+p{
+    background-color:white;
+    border: #7e0707 solid 3px;
+    color:#A60303;
+    font-family: InterBold;
+    border-radius: 20px;
 }
 
 .footer{
