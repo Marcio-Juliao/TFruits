@@ -65,6 +65,9 @@
             </div>    
         </div>
         <button class="result" onclick="result()">mostrar resultados</button>
+        <div id="alerta">
+            <p></p>
+        </div>
     </div>
     <!--informações especifícas-->
     <div class="dispositivos" id="disp">
@@ -163,6 +166,9 @@ function result() {
         temp.innerHTML = `<div class="result_ok">${(12 + 12) / 2}</div>`
     }
 
+    setTimeout(() => {
+        alerta.innerHTML =`<p> 🔴 Caixa ${sensor} - está em perigo! Está com 20º!</p>`
+    }, 1000);
 }
 
 const labels = ['04', '05', '06', '07', '08', '09'];
