@@ -1,0 +1,64 @@
+@font-face {
+    font-family: League-Gothic;
+    src: url("./font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("./font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("./font/Inter/static/Inter-Bold.ttf");
+}
+
+.fonte1{
+    font-family: League-Gothic;
+}
+
+.fonte2 {
+    font-family: Inter;
+    color: #fff;
+}
+
+.fonte3 {
+    font-family: InterBold;
+}
+
+a{
+    font-family: "InterBold";
+    color: white;
+    text-decoration: none;
+}
+
+b{
+    font-family: "InterBold";
+    text-decoration: none;
+    color: #203204
+}
+
+a:hover{
+    font-family: "InterBold";
+    color: #203204;
+    text-decoration: underline;
+    opacity: 50%;
+    
+}
+.nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: #558C03;
+    font-size: 20px;
+
+}
+.nav.logo2{
+ 
+    width: 30%;
+ 
+}

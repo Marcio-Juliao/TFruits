@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - TFruit</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="NavBar_Tfruit.css">
+    <link rel="stylesheet" href="footer2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./favicon.png" />
+</head>
+
+<body>
+
+
+    <div class="nav">
+        <div class="DireitaNav">
+            <img src="../imagens/TFruit_Logo.png" class="logo">
+            <a href="index.html">Home</a>|
+            <a href="calculadora.html">Simulador Financeiro</a>|
+            <a href="Quem_somos.html"> Sobre Nós</a>
+        </div>
+        
+        <div class="EsquerdaNav">
+            <a href="login.html">Login</a>|
+            <b class="b">Cadastrar</b>
+        </div>
+    </div>
+
+
+    <main class="CDpai">
+        <section class="CDcard">
+            <form class="CDformu">
+                <fieldset class="CDdivscroll">
+                    <legend class="CDtitulo">CADASTRO</legend>
+                    <div class="CDdado">
+                        <Label for="negocio">Nome do Negócio</Label>
+                        <input style="text-align: center;" type="text" id="negocio" name="negocio"
+                            placeholder="SPTech">
+                    </div>
+                    <div class="CDdado">
+                        <Label for="email">Email</Label>
+                        <input style="text-align: center;" type="email" name="email" id="email"
+                            placeholder="example@mail.com">
+                    </div>
+                    <div class="CDdado">
+                        <Label for="telefone">Telefone Fixo</Label>
+                        <input style="text-align: center;" type="tel" name="telefone" id="telefone"
+                            placeholder="(11) 9999-9999">
+                    </div>
+                    <div class="CDdado">
+                        <Label for="cnpj">CNPJ</Label>
+                        <input style="text-align: center;" type="number" name="cnpj" id="cnpj"
+                            placeholder="00.000.000/0000-00">
+                    </div>
+                    <div class="CDdado">
+                        <label for="cep">CEP</label>
+                        <input style="text-align: center;" type="number" id="cep"
+                            placeholder="00000-000">
+                    </div>
+                    <div class="CDdado">
+                        <Label for="nmr">Número do endereço</Label>
+                        <input style="text-align: center;" type="number" id="nmr" name="nmr"
+                            placeholder="000">
+                    </div>
+                    <div class="CDdado">
+                        <Label for="complemento">Complemento</Label>
+                        <input style="text-align: center;" type="text" id="complemento" name="complemento"
+                            placeholder="Andar 0">
+                    </div>
+                </fieldset>
+               
+                    <button onclick="cadastrar()" class="CDbotaoCadastro" type="submit"><a href="Pós_Cadastro.html">CADASTRAR</a></button>
+                                    </form>
+        </section>
+        <div class="CDimagem">
+            <img src="./elemento-cadastro.png" alt="" class="CDelemento" height="600px">
+        </div>
+    </main>
+    <div class="footer"> 
+        <p> @TFruit2024 </p>
+        
+        <p>tfruit@sptech.school</p>
+    </div>
+</body>
+</html>
+<script>
+    var nome = negocio.value;
+    var email = email.value;
+    var tel = telefone.value;
+    var cnpj = cnpj.value;
+    var cep = cep.value;
+    var nmr = nmr.value;
+    var comp = complemento.value
+
+    function cadastro(){
+        if(nome == "" || email == "" || tel == "" || cnpj == "" || cep == "" || nmr == ""){
+            alert(`Preencha todos os campos`);
+        }
+    }
+</script>

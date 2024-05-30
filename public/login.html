@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TFruit</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="NavBar_TfruitAntiBugHome.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./favicon.png" />
+</head>
+<body>
+
+
+    <div class="nav">
+        <div class="DireitaNav">
+            <img src="../imagens/TFruit_Logo.png" class="logo">
+            <a href="index.html">Home</a>|
+            <a href="calculadora.html">Simulador Financeiro</a>|
+            <a href="Quem_somos.html"> Sobre Nós</a>
+        </div>
+        
+        <div class="EsquerdaNav">
+            <b class="b">Login</b>|
+            <a href="cadastro.html">Cadastrar</a>
+        </div>
+    </div>
+
+
+    <div class="LGpai">
+        <div class="LGimagem">
+            <img src="./elemento-cadastro.png" alt="" class="LGelemento">
+        </div>
+        <div class="LGcard">
+            <div class="LGformu">
+                <div>
+                    <legend class="LGtitulo">L O G I N</legend>
+                   
+                    <div class="LGdado">
+                        <Label for="email">Email</Label>
+                        <input style="text-align: center;" type="email" name="email" id="input_email"
+                            placeholder="example@mail.com">
+                    </div>
+                   <br>
+                    <div class="LGdado">
+                        <Label for="senha">Senha</Label>
+                        <input style="text-align: center;" type="password" id="input_senha" name="senha"
+                            placeholder="***********">
+                    </div>
+                </div>
+                <button onclick="entrar()" class="LGbotaoEntrar" type="submit">ENTRAR</button>
+                
+             <div class="LGcadastro"> 
+                <span class="LGtexto">Não possui cadastro?</span> <button onclick="cadastrar()" class="LGbotaoCadastro" id="cadastro"><a href="cadastro.html"> Cadastre-se </a></button> 
+             </div> 
+            </div>
+        </div>
+
+    </div>
+    <div class="footer"> 
+        <p> @TFruit2024 </p>
+        
+        <p>tfruit@sptech.school</p>
+    </div>
+</body>
+
+</html>
+<script>
+    function entrar(){
+        var mail = input_email.value;
+        var passwd = input_senha.value;
+        if(mail == "brandao@sptech.school" && passwd == "123456"){
+            alert(`BEM VINDO A TFRUIT!`);
+            window.location.href="dashboard_adm.html"
+        }
+        else if (mail == "julia@sptech.school" && passwd == "123") {
+            alert(`BEM VINDO A TFRUIT!`);
+            window.location.href="dashboard.html"
+        }
+        else{
+            alert(`Email ou Senha Incorretos`); 
+        }
+    }
+
+</script>
+

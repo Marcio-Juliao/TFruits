@@ -1,0 +1,279 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@font-face {
+    font-family: League-Gothic;
+    src: url("./font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("./font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("./font/Inter/static/Inter-Bold.ttf");
+}
+
+.nav{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    border-bottom: #F29F05 solid 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.nav .dashboard{
+    color: white;
+    background-color: #F27405;
+    border: #F27405 solid 5px ;
+    border-radius: 20px;
+    width: 140px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 17px;
+}
+.nav .sair{
+   
+    background-color: white;
+    border: #A60303 solid 2px ;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+   
+}
+.nav .sair a{
+     font-family: InterBold;
+     font-size: 17px;
+     color: #A60303;
+}
+.nav .cadastrar{
+    background-color: white;
+    border: #F27405 solid 2px ;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+   
+}
+.nav .cadastrar a{
+    font-family: InterBold;
+     font-size: 17px;
+     color: #F27405;
+}
+.nav .nav_esquerda{
+    height: 100%;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.nav .nav_direita {
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: Inter;
+    text-align: center;
+}
+.nav .nav_direita img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+}
+
+
+.infos{
+    width: 100%;
+    height: 250px;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.top{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.top .sensores{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: InterBold;
+    font-size: 15px;
+}
+.top .sensores select{
+    color: white;
+    background-color: #F29F05;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    text-align: center;
+}
+.top .Temperatura{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: InterBold;
+    text-align: center;
+    font-size: 15px; 
+}
+.top .Temperatura .style_temp_alerta{
+    color: white;
+    background-color: #F29F05;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .Temperatura .style_temp_ok{
+    color: white;
+    background-color: #558C03;
+    border: #477905 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .Temperatura .style_temp_perigo{
+    color: white;
+    background-color: #A60303;
+    border: #7e0707 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 30px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .tempo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    font-family: InterBold;
+    text-align: center;
+    font-size: 15px; 
+}
+.top .tempo .style_tempo{
+    color: black;
+    background-color: white;
+    border: #F27405 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 37px;
+    font-family: InterBold;
+    font-size: 13px;
+    
+}
+
+.result{
+    color: white;
+    background-color: #F27405;
+    border: #eb5b08 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_alerta{
+    color: white;
+    background-color: #F29F05;
+    border: #d88407 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_ok{
+    color: white;
+    background-color: #558C03;
+    border: #477905 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.result_perigo{
+    color: white;
+    background-color: #A60303;
+    border: #7e0707 solid 3px ;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-family: InterBold;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dispositivos{
+    width: 99.5%;
+    height: 40px;
+    background-color:rgba(85, 140, 3, 0.1);
+    border: #558C03 solid 3px;
+    color: #558C03;
+    display: flex;
+    align-items: center;
+    font-family: InterBold;
+    font-size: 20px;
+}
+p{
+    background-color:white;
+    border: #7e0707 solid 3px;
+    color:#A60303;
+    font-family: InterBold;
+    border-radius: 20px;
+}
+
+.footer{
+    width: 100%;
+    height: 90px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: #F27405 solid 2px;
+}
+.footer img{
+    width: 120px;
+    height: 60px;
+}
+

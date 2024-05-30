@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - TFruit</title>
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="NavBar_Tfruit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./favicon.png" />
+</head> 
+<body>
+
+
+    <div class="nav">
+        <div class="DireitaNav">
+            <img src="./TFruit_Logo.png" class="logo">
+            <a href="index.html">Home</a>|
+            <b class="b">Simulador Financeiro</b>|
+            <a href="Quem_somos.html"> Sobre Nós</a>
+        </div>
+        
+        <div class="EsquerdaNav">
+            <a href="login.html">Login</a>|
+            <a href="cadastro.html">Cadastrar</a>
+        </div>
+    </div>
+
+    
+    <main class="pai">
+        <section class="card">
+            <div class="formu">
+                <fieldset>
+                    <legend class="titulo m-bottom">CALCULADORA</legend>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="negocio">Nome do Negócio</Label>
+                        <input class="input" style="text-align: center;" type="text" id="in_negocio"
+                            placeholder="Ex: SPTECH">
+                    </div>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="email">Quantas entregas são realizadas no mês?</Label>
+                        <input class="input" style="text-align: center;" type="number" id="in_entrega"
+                            placeholder="Ex: 10000">
+                    </div>
+                    <div class="dado m-b">
+                        <Label class="m-y" for="telefone">Qual é a média do valor de cada entrega?</Label>
+                        <input class="input m-bottom font1" style="text-align: center;" type="number" id="in_valor"
+                            placeholder="Ex: 5000">
+                    </div>
+                </fieldset>
+                <button onclick="calcular()" class="botaoCalcular">RESULTADO</button>
+                <div id="div_resultado" class="resultado" style="text-align: center;"></div>
+                <div id="div_limpar" style="display: none;"></div>
+            </div> 
+
+        </section>
+        
+    </main>
+     <div class="footer"> 
+                <p> @TFruit2024 </p>
+                
+                <p>tfruit@sptech.school</p>
+        </div> 
+</body>
+
+</html>
+<script>
+    function calcular() {
+
+        div_limpar.innerHTML = ``;
+
+        var nome = document.getElementById('in_negocio').value;
+        var entrega = parseFloat(document.getElementById('in_entrega').value);
+        var valor = parseFloat(document.getElementById('in_valor').value);
+        var total = entrega * valor;
+        var perda = total * 0.4;
+        var ganho_final = total - perda;
+        var garantia = perda / 2;
+        var ganho_tfruit = ganho_final + garantia;
+
+        document.getElementById('div_resultado').innerHTML = `
+        <span class="fonte2">
+        <br>A empresa ${nome}, deveria obter um ganho de R$${total}. Porém, devido as perdas ocasionadas pelo transporte inadequado do seu produto com a temperatura incorreta, a ${nome} sofre com uma perda de R$${perda}, tendo um ganho final de R$${ganho_final} .<br><br> 
+        Ao olhar para o 1º mês, essa perda não parece significante. Mas se olharmos para um cenário de 6 meses, estamos falando de um valor de R$${perda * 6} que deixa de entrar na empresa.<br><br>
+
+        Com a Tfruit, a ${nome} teria um ganho de até ${garantia } a mais. Isso porque com o nosso serviço, garantimos que pelo menos 50% da sua perda será evitada. Resultando um ganho final de pelo menos R$${ganho_tfruit} . <br><br>
+
+        Em um cenário de 6 meses, estariamos evitando uma perda de no mínimo R${garantia * 6} , agregando R$${ganho_tfruit * 6} na receita financeira.<br><br>`;
+
+    } 
+</script>

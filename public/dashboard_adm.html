@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TFruit</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="dashboard_dados.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
+   
+</head>
+<body>
+    <!--Nav-->
+
+    <div class="nav">
+        <div class="nav_esquerda">
+        <button class="sair"><a href="Home TFruit.html">sair</a></button>
+        <button class="dashboard">dashboard</button>
+        <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
+        <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
+        <button class="cadastrar"><a href="suporte.html">suporte</a></button>
+        </div>
+        <div class="nav_direita">
+            <div>
+            Brandão <br>
+            SPTech
+            </div>
+            <div class="img_nav">
+            <img src="imagens/banana.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--informações-->
+    <div class="infos">
+        <div class="top">
+            <div class="sensores">
+                Disposítivos
+            <select name="" id="sensor_select">
+                    <option value="#">selecione o sensor</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>    
+                    <option value="all">Todos</option>              
+                </select>
+            </div>
+            <div class="Temperatura">
+                Temperatura 
+                nesse exato momento 
+                <div id="temperatura">
+                    <div class="style_temp_alerta"></div>
+                </div>
+            </div>
+            <div class="tempo">
+                última atualização
+                <div class="style_tempo">
+                    06/05/2024 <br>
+            <time>12:00:00</time>
+            </div>
+            </div>    
+        </div>
+        <button class="result" onclick="result()">mostrar resultados</button>
+        <div id="alerta">
+            <p></p>
+        </div>
+    </div>
+    <!--informações especifícas-->
+    <div class="dispositivos" id="disp">
+        Dispositivo
+    </div>
+    <div id="dados" class="dados">
+        <div class="direita">
+            <div class="elemento_1">
+            <select name="" id="select_dia">
+                <option value="atual">atual</option>
+                <option value="5">05/05/2024</option>
+                <option value="4">04/05/2024</option>
+                <option value="3">03/05/2024</option>
+            </select>
+            </div>
+            <div class="elemento_2">
+                Temperatura Média <br> Diária
+                <div id="temp">
+                    <div class="result_alerta"></div>
+                </div>
+            </div>
+            <div class="elemento_3">
+                <div class="perigo">🔴 perigo</div>
+                <div class="alerta">🟡 alerta</div>
+                <div class="ok">🟢 está bem</div>
+            </div>
+        </div>
+        <div class="esquerda">
+            <div class="gráfico_1">
+                <h1>Gráfico - temperatura diária</h1>
+                <section style="width: 90%;">
+                    <canvas id="myChart"></canvas>
+                </section>
+            </div>
+            <div class="gráfico_2">
+                <h1>Gráfico - contagem  de ocorrência  mensal</h1>
+                <section style="width: 90%;">
+                    <canvas id="myChart2"></canvas>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer">
+        <img src="imagens/Logo_footer.png" alt="">
+    </div>
+</body>
+</html>
+
+<script>
+    const showTimeNow = () =>{
+//Selecinando a tag de destino
+  const clockTag = document.querySelector('time');
+  
+//Instanciando a classe Date
+  let dateNow = new Date();
+//pegando os valores desejados
+  let hh = dateNow.getHours();
+  let mm = dateNow.getMinutes();
+  let ss = dateNow.getSeconds();
+  
+//validando a necessidade de adicionar zero na exibição
+  hh = hh < 10 ? '0'+ hh : hh; 
+  mm = mm < 10 ? '0'+ mm : mm; 
+  ss = ss < 10 ? '0'+ ss : ss; 
+   
+// atribuindo os valores e montando o formato da hora a ser exibido
+  clockTag.innerText = hh +':'+ mm +':'+ ss;
+}
+//executando a funcao a cada 1 segundo
+showTimeNow()
+setInterval(showTimeNow, 1000);
+
+function result() {
+
+    var sensor = sensor_select.value
+
+    disp.innerHTML = ` Dispositivo ${sensor} `
+
+    if (sensor == 1 || sensor == 2 || sensor == 4 || sensor == 5 || sensor == 8 ||sensor == 9 ) {
+        temperatura.innerHTML = '<div class="style_temp_perigo">20°</div>'
+        temp.innerHTML = `<div class="result_perigo">${(17 + 20) / 2}</div>`
+        
+    }
+    else if(sensor == "#"){
+        temperatura.innerHTML = ""
+        temp.innerHTML = ""
+    }
+    else if (sensor == "all") {
+        temperatura.innerHTML = `<div class="style_temp_alerta">média de : ${(12 + 17) / 2}</div> `
+        temp.innerHTML = `<div class="result_alerta">${(12 + 17) / 2}</div>`
+    }
+    else{
+        temperatura.innerHTML = '<div class="style_temp_ok">12°</div>'
+        temp.innerHTML = `<div class="result_ok">${(12 + 12) / 2}</div>`
+    }
+
+    setTimeout(() => {
+        alerta.innerHTML =`<p> 🔴 Caixa ${sensor} - está em perigo! Está com 20º!</p>`
+    }, 1000);
+
+}
+
+const labels = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'];
+
+const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Temperatura',
+        backgroundColor: '#F29F05',
+        borderColor: '#F29F05',
+        data: [16, 17, 17, 16, 16, 17]
+    }]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+
+        scales: {
+            y: {
+                min: 0,
+                max: 30
+            }
+        }
+    } 
+};
+const myChart= new Chart(document.getElementById('myChart'),
+    config
+);
+const labels2 = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'];
+
+const data2 = {
+    labels: labels2,
+    datasets: [{
+        label: 'Temperatura Ultrapassou',
+        backgroundColor: '#A60303',
+        borderColor:'#A60303',
+        data: [10, 5, 6, 5, 1, 0]
+    }, {
+        label: 'Temperatura Mantida',
+        backgroundColor: '#558C03',
+        borderColor: '#558C03',
+        data: [20, 25, 24, 25, 29, 30]
+    }]
+};
+
+const config2 = {
+    type: 'bar',
+    data: data2,
+    options: {
+
+        scales: {
+            y: {
+                min: 0,
+                max: 30
+            }
+        }
+    } 
+};
+
+const myChart2= new Chart(document.getElementById('myChart2'),
+    config2
+);
+</script>

@@ -1,0 +1,428 @@
+@font-face {
+    font-family: League-Gothic;
+    src: url("./font/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf");
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("./font/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: InterBold;
+    src: url("./font/Inter/static/Inter-Bold.ttf");
+}
+
+/*LG - LOGIN*/
+
+.LGpai {
+    height: 700px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+   
+}
+.LGpai a{
+    color: #A60303;
+}
+
+.LGcard {
+    height: fit-content;
+    width: fit-content;
+    background-color: #A60303;
+    border: #700202 solid 5px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+}
+
+.LGcard {
+    font-family: League-Gothic;;
+}
+
+
+.LGtitulo {
+    color: white;
+    font-size: 70px;
+}
+
+.LGbotaoEntrar {
+    color: #A60303;
+    font-size: 27px;
+    height: 50px;
+    width: fit-content;
+    background-color: white;
+    border: #700202 solid 5px;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+}
+
+.LGbotaoCadastro {
+    color: #A60303;
+    font-size: 27px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    border: #700202 solid 5px;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.LGcadastro {
+
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+ 
+    
+
+}
+
+.LGformu {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LGformu legend {
+    text-align: center;
+}
+
+.LGformu input {
+    height: 30px;
+    width: 300px;
+}
+
+.LGbotaoCadastro button {
+    font-family: InterBold;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.LGbotaoCadastro a{
+    text-decoration: none;
+}
+
+.LGbotaoEntrar button {
+    font-family: InterBold;
+    color: white;
+    padding: 100px;
+
+}
+
+.LGbotaoEntrar:hover{
+    opacity: 50%;
+}
+
+.LGbotaoCadastro:hover {
+    opacity: .7;
+    transition: 300ms;
+}
+
+.LGbotaoCadastro:focus {
+    outline: 2px solid #333;
+}
+
+.LGelemento {
+    margin-left: 100px;
+    margin-bottom: -50px;
+    /* margin-right: 20px; */
+}
+
+.LGdado {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.LGdado input{
+    border: #700202 solid 2px;
+    border-radius: 10px;
+}
+
+
+.LGtexto {
+    display: flex;
+    color: #fff;
+    text-align: start;
+    font-size: 25px;
+    
+}
+
+.LGbotaocadastre-se {
+    display: flex;
+    color: #fff;
+    text-align: end;
+    color: #A60303;
+    font-size: 27px;
+    height: 30px;
+    width: fit-content;
+    background-color: white;
+    border: none;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+    
+}
+
+.LGdado label {
+    color: inherit;
+    text-align: center;
+    font-size: 24px;
+}
+
+.LGimagem {
+    height:600px;
+    /* margin-left: -50px; */
+    display: flex;
+    align-items: end;
+}
+.LGimagem img{
+    width: 100%;
+    height: 600px;
+}
+
+fieldset {
+    border: none;
+}
+
+.LGbotaoCadastro {
+    margin-left: 30px;
+}
+
+.LGcadastro span{
+    margin-bottom: 9px;
+}
+
+/*CD - CADASTRO*/
+
+.CDpai {
+    height: 680px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+   
+}
+.CDcard {
+    height: fit-content;
+    width: fit-content;
+    background-color: #558C03;
+    border: #3b6102 solid 5px;
+    border-radius: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CDcard {
+    font-family: League-Gothic;
+    margin-left: 7%;
+}
+
+
+.CDdivscroll{
+    overflow: auto;
+}
+
+.CDtitulo {
+    color: white;
+    font-size: 70px;
+}
+
+.CDbotaoCadastro {
+    color: #558C03;
+    font-size: 27px;
+    height: 50px;
+    width: fit-content;
+    background-color: white;
+    border: #3b6102 solid 5px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+    text-decoration: none;
+    
+}
+.CDbotaoCadastro a{
+    color: #3b6102;
+    text-decoration: none;
+}
+.CDformu {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.CDformu legend {
+    text-align: center;
+}
+
+.CDformu input {
+    height: 30px;
+    width: 300px;
+}
+
+.CDbotaoCadastro button {
+    font-family: InterBold;
+    color: white;
+    padding: 100px;
+
+}
+
+.CDbotaoCadastro:hover {
+    opacity: .7;
+    transition: 300ms;
+}
+.CDbotaoCadastro:focus {
+    outline: 2px solid #333;
+}
+
+.CDelemento {
+    margin-left: 8px;
+    margin-bottom: -50px;
+    margin-right: 20px;
+}
+
+.CDdado {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.CDdado input{
+    border: #3b6102 solid 2px;
+    border-radius: 10px;
+}
+
+.CDdado label {
+    color: inherit;
+    text-align: center;
+    font-size: 24px;
+}
+
+.CDimagem {
+    height: 580px;
+
+    display: flex;
+    margin-left: 300px;
+    align-items: end;
+}
+
+/*PC - PÓS CADASTRO*/
+
+.PCpai {
+    height: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+   
+}
+
+.PCpai {
+    height: 680px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.PCcard {
+    height: 530px;
+    width:450px;
+    background-color: #F28505;
+    border-radius: 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PCcard {
+    font-family: League-Gothic;
+    margin-left: 7%;
+}
+
+.PCcard-info {
+    height: 150px;
+    width:350px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.PCcard-info img{
+    height: 75px;
+}
+.PCcard-info b{
+    font-size: 40px;
+}
+
+.PCtitulo {
+    color: white;
+    font-size: 70px;
+}
+
+.PCbotaoCadastro {
+    color: #F28505;
+    font-size: 27px;
+    height: 50px;
+    width: fit-content;
+    background-color: white;
+    border: none;
+    margin-top: 15px;
+    font-family: InterBold;
+    border-radius: 5px;
+}
+.PCbotaoCadastro a{
+    color: #F28505;
+}
+.PCformu {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PCformu legend {
+    text-align: center;
+}
+
+.PCbotaoCadastro button {
+    font-family: InterBold;
+    color: white;
+    padding: 100px;
+
+}
+
+.PCbotaoCadastro:hover {
+    opacity: .7;
+    transition: 300ms;
+}
+.PCbotaoCadastro:focus {
+    outline: 2px solid #333;
+}
+
+.PCelemento {
+    margin-left: -100px;
+    margin-right: 0%;
+}
+
+
+.PCimagem {
+    height: 580px;
+
+    display: flex;
+    margin-left: 300px;
+    align-items: end;
+}

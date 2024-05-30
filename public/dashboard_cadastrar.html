@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar - TFruit</title>
+    <link rel="stylesheet" href="dashboard_cadastrar.css">
+    <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <!--nav-->
+    <div class="nav">
+        <div class="nav_esquerda">
+        <button class="sair"><a href="Home TFruit.html">sair</a></button>
+        <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
+        <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
+        <button class="cadastrar"><a>cadastrar</a></button>
+        <button class="dashboard"><a href="suporte.html">suporte</a></button>
+        </div>
+        <div class="nav_direita">
+            <div>
+            Brandão <br>
+            SPTech
+            </div>
+            <div class="img_nav">
+            <img src="imagens/banana.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!--parte Cadastro de Funcionários-->
+    <div class="corpo">
+        <div class="esquerda">
+            <div class="funcionário">
+            <button onclick="Func_1()">Funcionário José</button>
+            <button onclick="Func_2()">Funcionário Bianca</button>
+            </div>
+            <button class="cadastrar"><a href="dashboard_cadastrar_2.html">Adicionar Funcionário</a></button>
+        </div>
+        <div class="direita" id="direita">
+           
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer">
+        <img src="imagens/Logo_footer.png" alt="">
+    </div>
+</body>
+</html>
+
+<script>
+    function Func_1() {
+        direita.innerHTML =`
+         Funcionário José <br><br>
+            Empresa : SPTech <br>
+            Email: josebezzera@sptech.school <br>
+        ` 
+    }
+    function Func_2() {
+        direita.innerHTML =`
+         Funcionário Bianca <br><br>
+            Empresa : SPTech <br>
+            Email: biancandrade@sptech.school <br>
+        ` 
+    }
+</script>
