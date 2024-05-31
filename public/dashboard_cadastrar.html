@@ -18,7 +18,7 @@
         </div>
         <div class="nav_direita">
             <div>
-            Brandão <br>
+            <span id="b_usuario">usuário</span> <br>
             SPTech
             </div>
             <div class="img_nav">
@@ -49,6 +49,9 @@
 </html>
 
 <script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
     function sair() {
         sessionStorage.clear();
         window.location = "./index.html";
