@@ -26,7 +26,18 @@ function cadastrar(nome, email, senha, empresaId) {
 
 function login(email, senha) {
     var instrucaoSql = `
-        SELECT idUsuario, nome, email, isAdm FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT fkEmpresa, idUsuario, nome, email, isAdm FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function cadastrarUsuario(fkEmpresa, nome, senha, email) {    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+    INSERT INTO usuario(fkEmpresa, nome, senha, email, isAdm) VALUES 
+    (${fkEmpresa}, '${nome}', '${senha}', '${email}', 0);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -35,5 +46,6 @@ function login(email, senha) {
 module.exports = {
     autenticar,
     cadastrar,
-    login
+    login,
+    cadastrarUsuario
 };

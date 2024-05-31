@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ptbr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,23 @@
     <link rel="stylesheet" href="dashboard_cadastrar.css">
     <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
 </head>
+
 <body>
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
-        <button class="sair"><a href="Home TFruit.html">sair</a></button>
-        <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
-        <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
-        <button class="cadastrar"><a>cadastrar</a></button>
+            <button class="sair"><a onclick="sair()">sair</a></button>
+            <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
+            <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
+            <button class="cadastrar"><a>cadastrar</a></button>
         </div>
         <div class="nav_direita">
             <div>
-            Brandão <br>
-            SPTech
+                Brandão <br>
+                SPTech
             </div>
             <div class="img_nav">
-            <img src="imagens/banana.png" alt="">
+                <img src="imagens/banana.png" alt="">
             </div>
         </div>
     </div>
@@ -31,15 +33,15 @@
     <div class="corpo_2">
         <div class="esquerda_2">
             <div class="cadastro">
-            <a>CADASTRO</a>
-            nome <input type="text">
-            email <input type="email">
-            senha <input type="text">
-            <button><a href="dashboard_cadastrar_3.html">CADASTRAR FUNCIONÁRIO</a></button>
+                <a>CADASTRO</a>
+                nome <input type="text" id="input_nome">
+                email <input type="email" id="input_email">
+                senha <input type="text" id="input_senha">
+                <button onclick="cadastrar()">CADASTRAR FUNCIONÁRIO</button>
             </div>
         </div>
         <div class="direita_2">
-           <img src="imagens/4.png" alt="">
+            <img src="imagens/4.png" alt="">
         </div>
     </div>
 
@@ -48,4 +50,59 @@
         <img src="imagens/Logo_footer.png" alt="">
     </div>
 </body>
+
 </html>
+
+<script>
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "./index.html";
+    }
+
+
+    function cadastrar() {
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var fkEmpresaVar = sessionStorage.getItem('FK_EMPRESA');
+
+        testeVar = nomeVar;
+
+        if (
+            nomeVar === "" ||
+            emailVar === "" ||
+            senhaVar == ""
+        ) {
+            alert("Verifique se todos os campos estão preenchidos!");
+            return false;
+        }
+        
+        fetch("/usuarios/cadastrarUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                fkEmpresaServer: fkEmpresaVar
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                } else {
+                    throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                }
+            })
+            .catch(function (error) {
+                console.error("#ERRO:", error);
+                alert("Houve um erro ao tentar realizar o cadastro!");
+            });
+
+        return false;
+    }
+
+</script>
