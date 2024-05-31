@@ -11,7 +11,7 @@
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
-        <button class="sair"><a href="Home TFruit.html">sair</a></button>
+            <button class="sair"><a onclick="sair()">sair</a></button>
         <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
         <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
         <button class="cadastrar"><a>cadastrar</a></button>
@@ -50,6 +50,11 @@
 </html>
 
 <script>
+    function sair() {
+        sessionStorage.clear();
+        window.location = "./index.html";
+    }
+    
     function Func_1() {
         direita.innerHTML =`
          Funcionário José <br><br>
