@@ -88,7 +88,53 @@ function cadastrar(req, res) {
     }
 }
 
+// TFRUIT
+
+function login(req, res) {
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está indefinida!");
+    } else {
+
+        usuarioModel.login(email, senha)
+            .then(
+                function (resultadoLogin) {
+                    console.log(`\nResultados encontrados: ${resultadoLogin.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoLogin)}`); // transforma JSON em String
+
+                    if (resultadoLogin.length == 1) {
+                        console.log(resultadoLogin);
+
+                        res.json({
+                            idUsuario: resultadoLogin[0].idUsuario,
+                            email: resultadoLogin[0].email,
+                            nome: resultadoLogin[0].nome,
+                            isAdm: resultadoLogin[0].isAdm
+                        });
+                    }
+                    else if (resultadoLogin.length == 0) {
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    } else {
+                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    login
 }

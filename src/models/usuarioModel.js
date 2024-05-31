@@ -22,7 +22,18 @@ function cadastrar(nome, email, senha, empresaId) {
     return database.executar(instrucaoSql);
 }
 
+// TFRUIT
+
+function login(email, senha) {
+    var instrucaoSql = `
+        SELECT idUsuario, nome, email, isAdm FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    login
 };

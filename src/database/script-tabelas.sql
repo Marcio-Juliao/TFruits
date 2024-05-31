@@ -6,6 +6,7 @@
 comandos para mysql server
 */
 
+
 CREATE DATABASE tfruit;
 USE tfruit;
 
@@ -46,24 +47,21 @@ CREATE TABLE usuario (
 	nome VARCHAR(50),
     senha VARCHAR (30),
     email VARCHAR(45),
-    tipoUsuario VARCHAR(45)
+    isAdm TINYINT
 );
 
-ALTER TABLE usuario 
-ADD CONSTRAINT chktipo CHECK (tipoUsuario IN('administrador','comum'));
-
-INSERT INTO usuario(fkEmpresa, nome, senha, email, tipoUsuario) VALUES 
-(1, 'Frizza', 'senhaF', 'frizza@sptech.transportes', 'administrador'),
-(1, 'Pedro', 'senhaP', 'pedro@sptech.transportes', 'comum'),
-(2, 'Brandão', 'senhaB', 'brandao@hortifruti.brandao', 'administrador'),
-(2, 'Julia', 'senhaJ', 'julia@hortifruti.brandao', 'comum'),
-(3, 'Pettry', 'senhaP', 'pettry@digital.frutas', 'administrador'),
-(3, 'Clara', 'senhaC', 'clara@digital.frutas', 'comum');
+INSERT INTO usuario(fkEmpresa, nome, senha, email, isAdm) VALUES 
+(1, 'Frizza', 'senhaF', 'frizza@sptech.transportes', 1),
+(1, 'Pedro', 'senhaP', 'pedro@sptech.transportes', 0),
+(2, 'Brandão', 'senhaB', 'brandao@hortifruti.brandao', 1),
+(2, 'Julia', 'senhaJ', 'julia@hortifruti.brandao', 0),
+(3, 'Pettry', 'senhaP', 'pettry@digital.frutas', 1),
+(3, 'Clara', 'senhaC', 'clara@digital.frutas', 0);
 
 SELECT
 empresa.nome as 'Empresa',
 empresa.email as 'Email da Empresa',
-usuario.tipoUsuario as 'Tipo Usuário',
+usuario.isAdm as 'Tipo Usuário',
 usuario.nome as 'Usuário',
 usuario.email as 'Email do Usuário'
 FROM usuario JOIN empresa

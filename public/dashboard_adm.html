@@ -15,7 +15,7 @@
 
     <div class="nav">
         <div class="nav_esquerda">
-        <button class="sair"><a href="Home TFruit.html">sair</a></button>
+        <button class="sair"><a onclick="sair()">sair</a></button>
         <button class="dashboard">dashboard</button>
         <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
         <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
@@ -35,7 +35,7 @@
     <div class="infos">
         <div class="top">
             <div class="sensores">
-                Disposítivos
+                Dispositivos
             <select name="" id="sensor_select">
                     <option value="#">selecione o sensor</option>
                     <option value="1">1</option>
@@ -121,6 +121,21 @@
 </html>
 
 <script>
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "./index.html";
+    }
+
+
+
+
+
+
+
+
+
+
     const showTimeNow = () =>{
 //Selecinando a tag de destino
   const clockTag = document.querySelector('time');
