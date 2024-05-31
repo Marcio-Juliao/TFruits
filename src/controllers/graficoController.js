@@ -13,7 +13,7 @@ function historicoDiario(req, res) {
 
 function contagemOcorrencia(req, res) {
     var data = req.body.dataServer;
-    var idUsuario = req.body.dataServer;
+    var idUsuario = req.body.idUsuarioServer;
 
     graficoModel.contagemOcorrencia(data, idUsuario).then((resultado) => {
         res.status(200).json(resultado);

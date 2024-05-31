@@ -193,12 +193,10 @@
 
         return false;
     }
-    
-    var idSensorVar;
 
     function montarSelect() {
 
-       idSensorVar = sensor_select.value; 
+        var idSensorVar = sensor_select.value;
         var idUsuarioVar = sessionStorage.ID_USUARIO;
 
         fetch("/graficos/montarSelect", {
@@ -246,7 +244,109 @@
         return false;
     }
 
+    var dadosHistoricoDiario; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+    function historicoDiario() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
 
+        var dataVar = select_dia.value;
+
+        // Dividindo a data em dia, mês e ano
+        var partesData = dataVar.split('/');
+
+        // Formatando a data no formato YYYY-MM-DD
+        dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+
+        console.log(dataVar);
+
+
+        fetch("/graficos/historicoDiario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                dataServer: dataVar
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    dadosHistoricoDiario = json;
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    // mesma coisa aqui
+    var dadosContagemOcorrencia; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+    function contagemOcorrencia() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+
+        var dataVar = select_dia.value;
+
+        // Dividindo a data em dia, mês e ano
+        var partesData = dataVar.split('/');
+
+        // Formatando a data no formato YYYY-MM-DD
+        dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+
+        console.log(dataVar);
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+        fetch("/graficos/contagemOcorrencia", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                dataServer: dataVar,
+                idUsuarioServer: idUsuarioVar
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    dadosContagemOcorrencia = json;
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
 
 
 
