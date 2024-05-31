@@ -113,7 +113,7 @@ function login(req, res) {
                             nomeE: resultadoLogin[0].nomeE,
                             fkEmpresa: resultadoLogin[0].fkEmpresa,
                             idUsuario: resultadoLogin[0].idUsuario,
-                            email: resultadoLogin[0].emailU,
+                            emailU: resultadoLogin[0].emailU,
                             nomeU: resultadoLogin[0].nomeU,
                             isAdm: resultadoLogin[0].isAdm
                         });

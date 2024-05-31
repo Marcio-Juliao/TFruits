@@ -13,4 +13,13 @@ router.post("/contagemOcorrencia", function (req, res) {
     graficoController.contagemOcorrencia(req, res);
 });
 
+router.post("/montarSelect", function (req, res) {
+    graficoController.montarSelect(req, res);
+});
+
+router.post("/montarSelectDispositivo", function (req, res) {
+    graficoController.montarSelectDispositivo(req, res);
+});
+
+
 module.exports = router;
