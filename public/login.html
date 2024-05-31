@@ -121,11 +121,12 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.EMAIL_USUARIO = json.emailU;
+                    sessionStorage.NOME_USUARIO = json.nomeU;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.IS_ADM = json.isAdm; 
                     sessionStorage.FK_EMPRESA = json.fkEmpresa; 
+                    sessionStorage.NOME_EMPRESA = json.nomeE;
 
                     if (json.isAdm == 1) {
                         alert(`BEM VINDO A TFRUIT!`);
