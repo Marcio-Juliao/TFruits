@@ -6,54 +6,149 @@
 comandos para mysql server
 */
 
-CREATE DATABASE aquatech;
+CREATE DATABASE tfruit;
+USE tfruit;
 
-USE aquatech;
 
+-- ---------------------- --
+-- Empresa
+-- ---------------------- --
 CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
+	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50),
+    email VARCHAR(45),
+    telFixo VARCHAR(30),
+    cnpj CHAR(14),
+    cep CHAR(9),
+    numEnd VARCHAR(45),
+    complemento VARCHAR(45),
+    dataCadastro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+
+INSERT INTO empresa(nome, email, telFixo, cnpj, cep, numEnd, complemento)  VALUES 
+('SPTech Transportes', 'contato@transporte.com', '(11) 1234-5678', '12345678901234', '12345-678', '123', 'Andar 101'),
+('Brandãos Hortifruti', 'contato@hortifrutibrandao.com', '(22) 9876-5432', '98765432109876', '98765-432', '456', 'Sala 202'),
+('Digital Bulding Frutas Tropical', 'contato@digitalfrutas.com', '(33) 5678-1234', '56789012345678', '56789-012', '789', 'Bloco B');
+
+SELECT * FROM empresa;
+
+
+
+-- ---------------------- --
+-- Usuário
+-- ---------------------- --
 CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+	idUsuario INT AUTO_INCREMENT,
+    fkEmpresa INT,
+		CONSTRAINT pkComposta PRIMARY KEY (idUsuario,fkEmpresa),
+        CONSTRAINT fkEmpresa_usuario FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
 	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+    senha VARCHAR (30),
+    email VARCHAR(45),
+    tipoUsuario VARCHAR(45)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+ALTER TABLE usuario 
+ADD CONSTRAINT chktipo CHECK (tipoUsuario IN('administrador','comum'));
+
+INSERT INTO usuario(fkEmpresa, nome, senha, email, tipoUsuario) VALUES 
+(1, 'Frizza', 'senhaF', 'frizza@sptech.transportes', 'administrador'),
+(1, 'Pedro', 'senhaP', 'pedro@sptech.transportes', 'comum'),
+(2, 'Brandão', 'senhaB', 'brandao@hortifruti.brandao', 'administrador'),
+(2, 'Julia', 'senhaJ', 'julia@hortifruti.brandao', 'comum'),
+(3, 'Pettry', 'senhaP', 'pettry@digital.frutas', 'administrador'),
+(3, 'Clara', 'senhaC', 'clara@digital.frutas', 'comum');
+
+SELECT
+empresa.nome as 'Empresa',
+empresa.email as 'Email da Empresa',
+usuario.tipoUsuario as 'Tipo Usuário',
+usuario.nome as 'Usuário',
+usuario.email as 'Email do Usuário'
+FROM usuario JOIN empresa
+ON fkEmpresa = idEmpresa;
+
+
+
+
+-- ---------------------- --
+-- Temperatura Ideal
+-- ---------------------- --
+CREATE TABLE temperaturaIdeal (
+	idTemperaturaIdeal INT PRIMARY KEY AUTO_INCREMENT,
+    valor DECIMAL(5,2)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+
+INSERT INTO temperaturaIdeal(valor)  VALUES 
+(12.00);
+
+SELECT * FROM temperaturaIdeal;
+
+
+
+-- ---------------------- --
+-- Dispositivo
+-- ---------------------- --
+CREATE TABLE dispositivo (
+	idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(45),
+    fkEmpresa INT,
+		CONSTRAINT fkEmpresa_dispositivo FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
+	fkTemperaturaIdeal INT,
+		CONSTRAINT fkTempIdeal_dispositivo FOREIGN KEY (fkTemperaturaIdeal) REFERENCES temperaturaIdeal(idTemperaturaIdeal)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+INSERT INTO dispositivo(nome, fkEmpresa, fkTemperaturaIdeal) VALUES 
+('Sensor 22', 1, 1),
+('Sensor 57', 1, 1),
+('Sensor 01', 2, 1),
+('Sensor 09', 2, 1),
+('Sensor 7', 3, 1),
+('Sensor 11', 3, 1);
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+SELECT idEmpresa as 'ID Empresa' , 
+empresa.nome as 'Empresa', 
+dispositivo.nome as 'Dispositivo', 
+temperaturaIdeal.valor as 'Temperatura Ideal'
+FROM dispositivo JOIN empresa
+	ON fkEmpresa = idEmpresa
+JOIN temperaturaIdeal
+	ON fkTemperaturaIdeal = idTemperaturaIdeal;
+
+
+
+
+-- ---------------------- --
+-- TemperaturaMedida
+-- ---------------------- --
+CREATE TABLE temperaturaMedida (
+	idTemperaturaMedida INT AUTO_INCREMENT,
+    fkDispositivo INT,
+		CONSTRAINT pkcomposta2 PRIMARY KEY (idTemperaturaMedida, fkDispositivo),
+        CONSTRAINT fkDispositivo_temp_medida FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(idDispositivo),
+	valor DECIMAL(5,2),
+    horaMedida DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
+
+INSERT INTO temperaturaMedida(fkDispositivo, valor) VALUES 
+(1, 11.50),
+(2, 12.20),
+(3, 12.80),
+(4, 12.50),
+(5, 13.50),
+(6, 14.00);
+
+SELECT empresa.nome as 'Empresa',
+dispositivo.nome as 'Dispositivo', 
+horaMedida as 'Hora Medida',
+temperaturaMedida.valor as 'Temperatura Medida', 
+temperaturaIdeal.valor as 'Temperatura Ideal'   
+FROM temperaturaMedida JOIN dispositivo
+	ON fkDispositivo = idDispositivo
+JOIN empresa 
+	ON fkEmpresa = idEmpresa
+JOIN temperaturaIdeal
+	ON fktemperaturaIdeal = idTemperaturaIdeal;

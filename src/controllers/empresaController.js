@@ -39,9 +39,27 @@ function cadastrar(req, res) {
   });
 }
 
+// TFRUIT
+
+function cadastrarEmpresa(req, res) {
+  var nome = req.body.nomeServer;
+  var email = req.body.emailServer;
+  var telFixo = req.body.telFixoServer;
+  var cnpj = req.body.cnpjServer;
+  var cep = req.body.cepServer;
+  var numEnd = req.body.numEndServer;
+  var complemento = req.body.complementoServer;
+
+  empresaModel.cadastrarEmpresa(nome, email, telFixo, cnpj, cep, numEnd, complemento).then((resultado) => {
+    res.status(201).json(resultado);
+  });
+
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
   cadastrar,
   listar,
+  cadastrarEmpresa
 };

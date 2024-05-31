@@ -20,4 +20,10 @@ router.get("/listar", function (req, res) {
   empresaController.listar(req, res);
 });
 
+// TFRUIT
+
+router.post("/cadastrarEmpresa", function (req, res) {
+  empresaController.cadastrarEmpresa(req, res);
+})
+
 module.exports = router;

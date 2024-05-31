@@ -24,4 +24,13 @@ function cadastrar(razaoSocial, cnpj) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+// TFRUIT
+
+function cadastrarEmpresa(nome, email, telFixo, cnpj, cep, numEnd, complemento) {
+  var instrucaoSql = `INSERT INTO empresa(nome, email, telFixo, cnpj, cep, numEnd, complemento)  VALUES 
+  ('${nome}', '${email}', '${telFixo}', '${cnpj}', '${cep}', '${numEnd}', '${complemento}')`;
+
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, cadastrarEmpresa };
