@@ -213,11 +213,12 @@ fieldset {
 }
 .CDcard {
     height: fit-content;
-    width: fit-content;
+    width: 60%;
     background-color: #558C03;
     border: #3b6102 solid 5px;
     border-radius: 10px 10px 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
