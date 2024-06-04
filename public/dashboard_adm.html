@@ -112,7 +112,7 @@
 
 <script>
 
-    esquerda.style.display = "none";    
+    esquerda.style.display = "none";
 
     function sair() {
         sessionStorage.clear();
@@ -256,11 +256,9 @@
 
         var dataVar = select_dia.value;
 
-        // Dividindo a data em dia, mês e ano
-        var partesData = dataVar.split('/');
+        var [dia, mes, ano] = dataVar.split('/')
 
-        // Formatando a data no formato YYYY-MM-DD
-        dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+        var dataVar = `${ano}-${mes}-${dia}`;
 
         console.log(dataVar);
 
@@ -308,13 +306,11 @@
 
         var dataVar = select_dia.value;
 
-        // Dividindo a data em dia, mês e ano
-        var partesData = dataVar.split('/');
+        var [dia, mes, ano] = dataVar.split('/')
 
-        // Formatando a data no formato YYYY-MM-DD
-        dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
-
+        var dataVar = `${ano}-${mes}-${dia}`;
         console.log(dataVar);
+        
         var idUsuarioVar = sessionStorage.ID_USUARIO;
 
         fetch("/graficos/contagemOcorrencia", {

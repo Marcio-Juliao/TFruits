@@ -4,7 +4,7 @@ var database = require("../database/config");
 
 function historicoDiario(data) {
     var instrucaoSql = `
-    SELECT valor AS temperatura, TIME(horaMedida) AS hora FROM temperaturaMedida WHERE DATE(horaMedida) = '${data}';
+    SELECT valor AS temperatura, date_format(horaMedida, '%H:%i') as hora FROM temperaturaMedida WHERE DATE(horaMedida) = '${data}';
     `;
 
     return database.executar(instrucaoSql);
