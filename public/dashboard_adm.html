@@ -266,7 +266,6 @@
 
         console.log(dataVar);
 
-
         fetch("/graficos/historicoDiario", {
             method: "POST",
             headers: {
@@ -285,6 +284,7 @@
                     console.log(JSON.stringify(json));
 
                     dadosHistoricoDiario = json;
+                    ajustaFormatoDiario();
 
                 });
 
@@ -314,7 +314,7 @@
 
         var dataVar = `${ano}-${mes}-${dia}`;
         console.log(dataVar);
-        
+
         var idUsuarioVar = sessionStorage.ID_USUARIO;
 
         fetch("/graficos/contagemOcorrencia", {
@@ -353,6 +353,13 @@
         })
 
         return false;
+    }
+
+    function ajustaFormatoDiario() {
+
+        dadosHistoricoDiario[0].hora = `${dadosHistoricoDiario[0].hora}:00`;
+        console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`); 
+
     }
 
 
