@@ -4,7 +4,8 @@ var database = require("../database/config");
 
 function historicoDiario(data) {
     var instrucaoSql = `
-    SELECT valor AS temperatura, date_format(horaMedida, '%H:%i') as hora FROM temperaturaMedida WHERE DATE(horaMedida) = '${data}';
+    SELECT ROUND(AVG(valor), 2) AS temperatura, date_format(horaMedida, '%H') as hora FROM temperaturaMedida 
+    WHERE DATE(horaMedida) = '${data}' GROUP BY date_format(horaMedida, '%H');
     `;
 
     return database.executar(instrucaoSql);
