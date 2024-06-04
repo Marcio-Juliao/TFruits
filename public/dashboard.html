@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <button class="result" onclick="montarSelect(); result();">mostrar resultados</button>
+        <button class="result" onclick="montarSelect(); geraResult();">mostrar resultados</button>
         <div id="alerta">
             <p></p>
         </div>
@@ -110,6 +110,10 @@
 </html>
 
 <script>
+
+function geraResult() {
+        result();
+    }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
@@ -352,33 +356,51 @@ return false;
 
 
 
-    function result() {
+function result() {
+       setInterval( function () {
 
-        var sensor = sensor_select.value
+           fetch("/graficos/result", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+                }
+            }).then(function (resposta) {
+                
+                if (resposta.ok) {
+                    console.log(resposta);
+                    
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
 
-        disp.innerHTML = ` Dispositivo ${sensor} `
-
-        if (sensor == 1 || sensor == 2 || sensor == 4 || sensor == 5 || sensor == 8 || sensor == 9) {
-            temperatura.innerHTML = '<div class="style_temp_perigo">20°</div>'
-            temp.innerHTML = `<div class="result_perigo">${(17 + 20) / 2}</div>`
-
-        }
-        else if (sensor == "#") {
-            temperatura.innerHTML = ""
-            temp.innerHTML = ""
-        }
-        else if (sensor == "all") {
-            temperatura.innerHTML = `<div class="style_temp_alerta">média de : ${(12 + 17) / 2}</div> `
-            temp.innerHTML = `<div class="result_alerta">${(12 + 17) / 2}</div>`
-        }
-        else {
-            temperatura.innerHTML = '<div class="style_temp_ok">12°</div>'
-            temp.innerHTML = `<div class="result_ok">${(12 + 12) / 2}</div>`
-        }
-
-        setTimeout(() => {
-            alerta.innerHTML = `<p> 🔴 Caixa ${sensor} - está em perigo! Está com 20º!</p>`
-        }, 1000);
+                        if (json[0].valor >= 12 && json[0].valor < 13) {
+                            temperatura.innerHTML = `<div class="style_temp_ok">${json[0].valor}</div>`;
+                        } else if (json[0].valor >= 10 && json[0].valor <= 14) {
+                            temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
+                        } else if (json[0].valor < 10 || json[0].valor > 14) {
+                            temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
+                        }
+                        
+                        
+                        
+                        
+                    });
+                    
+                } else {
+                    
+                    console.log("Houve um erro ao tentar mostrar a temperatura");
+                    
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+                
+            }).catch(function (erro) {
+                console.log(erro);
+            })}
+            
+            ,5000)
+        return false;
     }
 
     const labels = ['04', '05', '06', '07', '08', '09'];

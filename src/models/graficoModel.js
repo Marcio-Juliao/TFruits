@@ -11,6 +11,15 @@ function historicoDiario(data) {
     return database.executar(instrucaoSql);
 }
 
+function result() {
+    var instrucaoSql =`
+    SELECT valor FROM temperaturaMedida ORDER BY horaMedida DESC LIMIT 1;
+    `;
+
+    return database.executar(instrucaoSql);
+}
+
+
 function contagemOcorrencia(data, idUsuario) {
     var instrucaoSql = `
   SELECT
@@ -68,4 +77,4 @@ function montarSelectDispositivo(idUsuario) {
 }
 
 
-module.exports = { contagemOcorrencia, historicoDiario, montarSelect, montarSelectDispositivo };
+module.exports = { contagemOcorrencia, historicoDiario, result, montarSelect, montarSelectDispositivo };

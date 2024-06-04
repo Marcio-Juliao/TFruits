@@ -21,6 +21,14 @@ function contagemOcorrencia(req, res) {
 
 }
 
+function result(req, res) {
+    
+    graficoModel.result().then((resultado) => {
+        res.status(200).json(resultado);
+    });
+
+}
+
 function montarSelect(req, res) {
     var idUsuario = req.body.idUsuarioServer;
     var idSensor = req.body.idSensorServer;
@@ -44,6 +52,7 @@ function montarSelectDispositivo(req, res) {
 module.exports = {
     historicoDiario,
     contagemOcorrencia,
+    result,
     montarSelect,
     montarSelectDispositivo
 };
