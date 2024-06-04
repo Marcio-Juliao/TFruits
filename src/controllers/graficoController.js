@@ -22,8 +22,10 @@ function contagemOcorrencia(req, res) {
 }
 
 function result(req, res) {
+
+    var empresa = req.body.empresaServer;
     
-    graficoModel.result().then((resultado) => {
+    graficoModel.result(empresa).then((resultado) => {
         res.status(200).json(resultado);
     });
 

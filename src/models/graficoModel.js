@@ -11,9 +11,9 @@ function historicoDiario(data) {
     return database.executar(instrucaoSql);
 }
 
-function result() {
+function result(empresa) {
     var instrucaoSql =`
-    SELECT valor FROM temperaturaMedida ORDER BY horaMedida DESC LIMIT 1;
+    SELECT valor FROM temperaturaMedida WHERE fkSensor = (SELECT idDispositivo FROM dispositivo where fkEmpresa = ${empresa} LIMIT 1) ORDER BY horaMedida DESC LIMIT 1;
     `;
 
     return database.executar(instrucaoSql);

@@ -379,13 +379,17 @@
 
 
     function result() {
+        var empresa = sessionStorage.FK_EMPRESA;
        setInterval( function () {
 
            fetch("/graficos/result", {
                method: "POST",
                headers: {
                    "Content-Type": "application/json"
-                }
+                },
+                body: JSON.stringify({
+                    empresaServer: empresa
+                })
             }).then(function (resposta) {
                 
                 if (resposta.ok) {
