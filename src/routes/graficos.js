@@ -5,6 +5,10 @@ var graficoController = require("../controllers/graficoController");
 
 // TFRUIT
 
+router.post("/result", function (req, res) {
+    graficoController.result(req, res);
+});
+
 router.post("/historicoDiario", function (req, res) {
     graficoController.historicoDiario(req, res);
 });
