@@ -378,7 +378,9 @@
 
 
     function result() {
-        var empresa = sessionStorage.FK_EMPRESA;
+
+        var id = sensor_select.value;
+
        setInterval( function () {
 
            fetch("/graficos/result", {
@@ -387,7 +389,7 @@
                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    empresaServer: empresa
+                    idServer: id
                 })
             }).then(function (resposta) {
                 
