@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onload="montarSelectDispositivo()">
     <!--Nav-->
 
     <div class="nav">
@@ -38,20 +38,9 @@
     <div class="infos">
         <div class="top">
             <div class="sensores">
-                Disposítivos
+                Dispositivos
                 <select name="" id="sensor_select">
-                    <option value="#">selecione o sensor</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="all">Todos</option>
+                    <option value="#" selected disabled>selecione o sensor</option>
                 </select>
             </div>
             <div class="Temperatura">
@@ -69,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <button class="result" onclick="result()">mostrar resultados</button>
+        <button class="result" onclick="montarSelect(); result();">mostrar resultados</button>
         <div id="alerta">
             <p></p>
         </div>
@@ -83,9 +72,6 @@
             <div class="elemento_1">
                 <select name="" id="select_dia">
                     <option value="atual">atual</option>
-                    <option value="5">05/05/2024</option>
-                    <option value="4">04/05/2024</option>
-                    <option value="3">03/05/2024</option>
                 </select>
             </div>
             <div class="elemento_2">
@@ -93,6 +79,8 @@
                 <div id="temp">
                     <div class="result_alerta"></div>
                 </div>
+                <br><br>
+                <button onclick="historicoDiario()" class="result">historico diário</button>
             </div>
             <div class="elemento_3">
                 <div class="perigo">🔴 perigo</div>
@@ -129,6 +117,8 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
+    esquerda.style.display = "none";
+
     function sair() {
         sessionStorage.clear();
         window.location = "./index.html";
@@ -157,6 +147,213 @@
     //executando a funcao a cada 1 segundo
     showTimeNow()
     setInterval(showTimeNow, 1000);
+
+    function montarSelectDispositivo() {
+
+var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+fetch("/graficos/montarSelectDispositivo", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        idUsuarioServer: idUsuarioVar
+    })
+}).then(function (resposta) {
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            globalDatasSelectDispositivo = json;
+
+            for (var i = 0; i < (globalDatasSelectDispositivo.length); i++) {
+                var nomeAtual = globalDatasSelectDispositivo[i].nomeDispositivo;
+                var idAtual = globalDatasSelectDispositivo[i].idDispositivo;
+
+                sensor_select.innerHTML += `<option value="${idAtual}">${nomeAtual}</option>`
+
+            }
+
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar montar o select!");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+
+function montarSelect() {
+
+var idSensorVar = sensor_select.value;
+var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+fetch("/graficos/montarSelect", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        idUsuarioServer: idUsuarioVar,
+        idSensorServer: idSensorVar
+    })
+}).then(function (resposta) {
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            globalDatasSelect = json;
+
+            for (var i = 0; i < (globalDatasSelect.length); i++) {
+                var dataAtual = globalDatasSelect[i].dataMedida;
+
+                select_dia.innerHTML += `<option value="${dataAtual}">${dataAtual}</option>`
+
+            }
+
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar montar o select!");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+
+var dadosHistoricoDiario; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+function historicoDiario() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+
+esquerda.style.display = "flex";
+
+var dataVar = select_dia.value;
+
+// Dividindo a data em dia, mês e ano
+var partesData = dataVar.split('/');
+
+// Formatando a data no formato YYYY-MM-DD
+dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+
+console.log(dataVar);
+
+
+fetch("/graficos/historicoDiario", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        dataServer: dataVar
+    })
+}).then(function (resposta) {
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            dadosHistoricoDiario = json;
+
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+
+// mesma coisa aqui
+var dadosContagemOcorrencia; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+function contagemOcorrencia() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+
+var dataVar = select_dia.value;
+
+// Dividindo a data em dia, mês e ano
+var partesData = dataVar.split('/');
+
+// Formatando a data no formato YYYY-MM-DD
+dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+
+console.log(dataVar);
+var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+fetch("/graficos/contagemOcorrencia", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        dataServer: dataVar,
+        idUsuarioServer: idUsuarioVar
+    })
+}).then(function (resposta) {
+
+    if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            dadosContagemOcorrencia = json;
+
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
+
+        resposta.text().then(texto => {
+            console.error(texto);
+        });
+    }
+
+}).catch(function (erro) {
+    console.log(erro);
+})
+
+return false;
+}
+
+
 
     function result() {
 
