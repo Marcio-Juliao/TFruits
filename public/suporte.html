@@ -15,7 +15,7 @@
 
     <div class="nav">
         <div class="nav_esquerda">
-        <button class="sair"><a href="Home TFruit.html">sair</a></button>
+        <button class="sair"><a onclick="sair()">sair</a></button>
         <button class="cadastrar"> <a href="dashboard_adm.html">dashboard</a></button>
         <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
         <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
@@ -24,12 +24,24 @@
         </div>
         <div class="nav_direita">
             <div>
-            Brandão <br>
-            SPTech
+                <span id="b_usuario">usuário</span><br>
+                <span id="b_empresa">empresa</span>
             </div>
             <div class="img_nav">
             <img src="imagens/banana.png" alt="">
             </div>
+        </div>
+    </div>
+
+    <!--Suporte-->
+    <div class="container_chat">
+        <div class="container_input">
+            <p>&nbsp; BobIA - Suporte pela IA &nbsp;</p>
+            <input type="text" id="input_pergunta" placeholder="Insira aqui sua Pergunta">
+            <button class="botao_pergunta" onclick="gerarResposta()">Enviar Pergunta</button>
+        </div>
+        <div class="container_resposta">
+            <textarea name="textarea_resposta" id="resposta" placeholder="A resposta aparecerá Aqui!" disabled></textarea>
         </div>
     </div>
 
@@ -40,3 +52,31 @@
 </body>
 </html>
 
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
+
+    function sair() {
+        sessionStorage.clear();
+        window.location = "./index.html";
+    }
+
+    async function gerarResposta() {
+        resposta.style.textAlign="center";
+        resposta.innerText = "Aguarde...";
+        const pergunta = input_pergunta.value;
+
+        const response = await fetch('http://localhost:3334/perguntar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta })
+        });
+
+        const data = await response.json();
+
+        resposta.style.textAlign="justify";
+        resposta.innerText = data.resultado;
+    }
+</script>

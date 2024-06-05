@@ -21,6 +21,7 @@
             <button class="dashboard">dashboard</button>
             <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
             <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
+            <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -69,7 +70,7 @@
         <div class="direita">
             <div class="elemento_1">
                 <select name="" id="select_dia">
-                    <option value="atual">atual</option>
+                    <option disabled selected>data</option>
                 </select>
             </div>
             <div class="elemento_2">
@@ -78,7 +79,7 @@
                     <div class="result_alerta"></div>
                 </div>
                 <br><br>
-                <button onclick="historicoDiario()" class="result">historico diário</button>
+                <button onclick="historicoDiario();contagemOcorrencia();" class="result">historico diário</button>
             </div>
             <div class="elemento_3">
                 <div class="perigo">🔴 perigo</div>
@@ -285,6 +286,7 @@
 
                     dadosHistoricoDiario = json;
                     ajustaFormatoDiario();
+                    gerarGraficoDiario()
 
                 });
 
@@ -336,6 +338,7 @@
                     console.log(JSON.stringify(json));
 
                     dadosContagemOcorrencia = json;
+                    GerarGraficoContagem()
 
                 });
 
@@ -432,66 +435,91 @@
         return false;
     }
 
-    const labels = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00'];
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Temperatura',
-            backgroundColor: '#F29F05',
-            borderColor: '#F29F05',
-            data: [16, 17, 17, 16, 16, 17]
-        }]
-    };
+    function gerarGraficoDiario() {
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
+        var dadosGrafico = [];
+        var horasGrafico = [];
+        for (var i = 0; i < dadosHistoricoDiario.length; i++) {
 
-            scales: {
-                y: {
-                    min: 0,
-                    max: 30
+            dadosGrafico.push(dadosHistoricoDiario[i].temperatura);
+            horasGrafico.push(dadosHistoricoDiario[i].hora);
+
+        }
+    
+        const data = {
+            labels: horasGrafico,
+            datasets: [{
+                label: 'Temperatura',
+                backgroundColor: '#F29F05',
+                borderColor: '#F29F05',
+                data: dadosGrafico
+            }]
+        };
+    
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+    
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 30
+                    }
                 }
             }
-        }
-    };
-    const myChart = new Chart(document.getElementById('myChart'),
-        config
-    );
-    const labels2 = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'];
+        };
+        const myChart = new Chart(document.getElementById('myChart'),
+            config
+        );
 
-    const data2 = {
-        labels: labels2,
-        datasets: [{
-            label: 'Temperatura Ultrapassou',
-            backgroundColor: '#A60303',
-            borderColor: '#A60303',
-            data: [10, 5, 6, 5, 1, 0]
-        }, {
-            label: 'Temperatura Mantida',
-            backgroundColor: '#558C03',
-            borderColor: '#558C03',
-            data: [20, 25, 24, 25, 29, 30]
-        }]
-    };
 
-    const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {
 
-            scales: {
-                y: {
-                    min: 0,
-                    max: 30
+    }
+    function GerarGraficoContagem() {
+
+        var dadosGraficoOk = [];
+        var dadosGraficoAlerta = [];
+        var dia = []
+        
+        dadosGraficoOk.push(dadosContagemOcorrencia[0].OK)
+        dadosGraficoAlerta.push(dadosContagemOcorrencia[0].ALERTA)
+        dia.push(select_dia.value)
+        
+        
+    
+        const data2 = {
+            labels: dia,
+            datasets: [{
+                label: 'Temperatura Ultrapassou',
+                backgroundColor: '#A60303',
+                borderColor: '#A60303',
+                data: dadosGraficoAlerta
+            }, {
+                label: 'Temperatura Mantida',
+                backgroundColor: '#558C03',
+                borderColor: '#558C03',
+                data: dadosGraficoOk
+            }]
+        };
+    
+        const config2 = {
+            type: 'bar',
+            data: data2,
+            options: {
+    
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 30
+                    }
                 }
             }
-        }
-    };
-
-    const myChart2 = new Chart(document.getElementById('myChart2'),
-        config2
-    );
+        };
+    
+        const myChart2 = new Chart(document.getElementById('myChart2'),
+            config2
+        );
+    }
 </script>
