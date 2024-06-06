@@ -22,4 +22,8 @@ router.post("/cadastrarUsuario", function (req, res) {
     usuarioController.cadastrarUsuario(req, res);
 });
 
+router.post("/listarFuncionarios", function (req, res) {
+    usuarioController.listarFuncionarios(req, res);
+});
+
 module.exports = router;

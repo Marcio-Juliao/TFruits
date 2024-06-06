@@ -172,9 +172,49 @@ function cadastrarUsuario(req, res) {
     }
 }
 
+function listarFuncionarios(req, res) {
+
+    var fkEmpresa = req.body.fkEmpresaServer;
+
+    if (fkEmpresa == undefined) {
+
+        res.status(400).send("Seu fkEmpresa está undefined!");
+
+    } else {
+
+        usuarioModel.listarFuncionarios(fkEmpresa)
+            .then(
+                function (resultadolistarFuncionarios) {
+                    console.log(`\nResultados encontrados: ${resultadolistarFuncionarios.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadolistarFuncionarios)}`); // transforma JSON em String
+
+                    if (resultadolistarFuncionarios.length > 0) {
+                        console.log(resultadolistarFuncionarios);
+
+                        res.json({
+                            nome: resultadolistarFuncionarios[0].nome,
+                            email: resultadolistarFuncionarios[0].email
+                        });
+                    }
+                    else if (resultadolistarFuncionarios.length == 0) {
+                        res.status(403).send("fkEmpresa inválida");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o listarFuncionarios! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     login,
-    cadastrarUsuario
+    cadastrarUsuario,
+    listarFuncionarios
 }

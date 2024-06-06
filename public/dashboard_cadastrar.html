@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ptbr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,25 @@
     <link rel="stylesheet" href="dashboard_cadastrar.css">
     <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
 </head>
-<body>
+
+<body onload="listarFuncionarios();">
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
             <button class="sair"><a onclick="sair()">sair</a></button>
-        <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
-        <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
-        <button class="cadastrar"><a>cadastrar</a></button>
-        <button class="dashboard"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+            <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
+            <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
+            <button class="cadastrar"><a>cadastrar</a></button>
+            <button class="dashboard"><a
+                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
-            <span id="b_usuario">usuário</span> <br>
-            <span id="b_empresa">empresa</span>
+                <span id="b_usuario">usuário</span> <br>
+                <span id="b_empresa">empresa</span>
             </div>
             <div class="img_nav">
-            <img src="imagens/banana.png" alt="">
+                <img src="imagens/banana.png" alt="">
             </div>
         </div>
     </div>
@@ -31,14 +34,14 @@
     <!--parte Cadastro de Funcionários-->
     <div class="corpo">
         <div class="esquerda">
-            <div class="funcionário">
-            <button onclick="Func_1()">Funcionário José</button>
-            <button onclick="Func_2()">Funcionário Bianca</button>
+            <div class="funcionário" id="funcionario">
+                <button onclick="Func_1()">Funcionário José</button>
+                <button onclick="Func_2()">Funcionário Bianca</button>
             </div>
             <button class="cadastrar"><a href="dashboard_cadastrar_2.html">Adicionar Funcionário</a></button>
         </div>
         <div class="direita" id="direita">
-           
+
         </div>
     </div>
 
@@ -47,6 +50,7 @@
         <img src="imagens/Logo_footer.png" alt="">
     </div>
 </body>
+
 </html>
 
 <script>
@@ -58,19 +62,90 @@
         sessionStorage.clear();
         window.location = "./index.html";
     }
-    
+
     function Func_1() {
-        direita.innerHTML =`
+        direita.innerHTML = `
          Funcionário José <br><br>
             Empresa : SPTech <br>
             Email: josebezzera@sptech.school <br>
-        ` 
+        `
     }
     function Func_2() {
-        direita.innerHTML =`
+        direita.innerHTML = `
          Funcionário Bianca <br><br>
             Empresa : SPTech <br>
             Email: biancandrade@sptech.school <br>
-        ` 
+        `
+    }
+
+    function listarFuncionarios() {
+
+        var fkEmpresaVar = sessionStorage.FK_EMPRESA;
+
+        var listaNomes = [];
+        var listaEmails = [];
+
+        fetch("/usuarios/listarFuncionarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fkEmpresaServer: fkEmpresaVar,
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    for (var i = 0; i < json.length; i++) {
+                        listaNomes.push(json[i].nome);
+                        listaEmails.push(json[i].email);
+                    }
+
+                    exibirListaFuncionarios(listaEmails, listaNomes);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar montar o select!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+
+    }
+
+    function exibirListaFuncionarios(listaEmails, listaNomes) {
+
+        var funcionario = document.getElementById('funcionario');
+        funcionario.innerHTML = "";
+
+        for (var i = 0; i < listaNomes.length; i++) {
+            console.log('oi');
+            funcionario.innerHTML += `
+            <button onclick="detalharFuncionario(${listaNomes[i]})">Funcionário(a) ${listaNomes[i]}</button>
+            `;
+
+        }
+
+    }
+
+    function detalharFuncionario() {
+
+        // Criar função depois
+
     }
 </script>

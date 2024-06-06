@@ -21,7 +21,8 @@
             <button class="dashboard">dashboard</button>
             <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
             <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
-            <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+            <button class="cadastrar"><a
+                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -229,10 +230,20 @@
 
                     globalDatasSelect = json;
 
+                    var lista_ax = [];
                     for (var i = 0; i < (globalDatasSelect.length); i++) {
                         var dataAtual = globalDatasSelect[i].dataMedida;
 
-                        select_dia.innerHTML += `<option value="${dataAtual}">${dataAtual}</option>`
+
+                        if (lista_ax.indexOf(dataAtual) == -1) {
+                            lista_ax.push(dataAtual);
+                        }
+                        select_dia.innerHTML = "<option disabled selected>data</option>"
+
+                        for (var index = 0; index < lista_ax.length; index++) {
+                            select_dia.innerHTML += `<option value="${lista_ax[index]}">${lista_ax[index]}</option>`
+
+                        }
 
                     }
 
@@ -360,7 +371,7 @@
     function ajustaFormatoDiario() {
 
         dadosHistoricoDiario[0].hora = `${dadosHistoricoDiario[0].hora}:00`;
-        console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`); 
+        console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`);
 
     }
 
@@ -384,21 +395,21 @@
 
         var id = sensor_select.value;
 
-       setInterval( function () {
+        setInterval(function () {
 
-           fetch("/graficos/result", {
-               method: "POST",
-               headers: {
-                   "Content-Type": "application/json"
+            fetch("/graficos/result", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     idServer: id
                 })
             }).then(function (resposta) {
-                
+
                 if (resposta.ok) {
                     console.log(resposta);
-                    
+
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
@@ -409,28 +420,29 @@
                             temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
                         } else if (json[0].valor < 10 || json[0].valor > 14) {
                             temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
-                            alerta.innerHTML=`<p>Caixa instável! A temeperatura chegou a ${json[0].valor}</p>`;
+                            alerta.innerHTML = `<p>Caixa instável! A temeperatura chegou a ${json[0].valor}</p>`;
                         }
-                        
-                        
-                        
-                        
+
+
+
+
                     });
-                    
+
                 } else {
-                    
+
                     console.log("Houve um erro ao tentar mostrar a temperatura");
-                    
+
                     resposta.text().then(texto => {
                         console.error(texto);
                     });
                 }
-                
+
             }).catch(function (erro) {
                 console.log(erro);
-            })}
-            
-            ,5000)
+            })
+        }
+
+            , 5000)
         return false;
     }
 
@@ -445,7 +457,7 @@
             horasGrafico.push(dadosHistoricoDiario[i].hora);
 
         }
-    
+
         const data = {
             labels: horasGrafico,
             datasets: [{
@@ -455,12 +467,12 @@
                 data: dadosGrafico
             }]
         };
-    
+
         const config = {
             type: 'line',
             data: data,
             options: {
-    
+
                 scales: {
                     y: {
                         min: 0,
@@ -481,13 +493,13 @@
         var dadosGraficoOk = [];
         var dadosGraficoAlerta = [];
         var dia = []
-        
+
         dadosGraficoOk.push(dadosContagemOcorrencia[0].OK)
         dadosGraficoAlerta.push(dadosContagemOcorrencia[0].ALERTA)
         dia.push(select_dia.value)
-        
-        
-    
+
+
+
         const data2 = {
             labels: dia,
             datasets: [{
@@ -502,12 +514,12 @@
                 data: dadosGraficoOk
             }]
         };
-    
+
         const config2 = {
             type: 'bar',
             data: data2,
             options: {
-    
+
                 scales: {
                     y: {
                         min: 0,
@@ -516,9 +528,10 @@
                 }
             }
         };
-    
+
         const myChart2 = new Chart(document.getElementById('myChart2'),
             config2
         );
     }
+
 </script>
