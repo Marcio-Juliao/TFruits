@@ -47,9 +47,19 @@ function cadastrarUsuario(fkEmpresa, nome, senha, email) {
     return database.executar(instrucaoSql);
 }
 
+function listarFuncionarios(fkEmpresa) {
+
+    var instrucaoSql = `
+    SELECT nome, email FROM usuario WHERE fkEmpresa = ${fkEmpresa} AND isAdm = 0;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     login,
-    cadastrarUsuario
+    cadastrarUsuario,
+    listarFuncionarios
 };
