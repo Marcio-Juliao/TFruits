@@ -20,6 +20,7 @@
             <button class="sair"><a onclick="sair()">sair</a></button>
             <button class="dashboard">dashboard</button>
             <button class="cadastrar"><a href="dashboard_historico2.html">histórico</a></button>
+            <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -77,7 +78,7 @@
                     <div class="result_alerta"></div>
                 </div>
                 <br><br>
-                <button onclick="historicoDiario()" class="result">historico diário</button>
+                <button onclick="historicoDiario();contagemOcorrencia();" class="result">historico diário</button>
             </div>
             <div class="elemento_3">
                 <div class="perigo">🔴 perigo</div>
@@ -111,12 +112,9 @@
 
 <script>
 
-function geraResult() {
+    function geraResult() {
         result();
     }
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
     esquerda.style.display = "none";
 
@@ -124,6 +122,9 @@ function geraResult() {
         sessionStorage.clear();
         window.location = "./index.html";
     }
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
 
     const showTimeNow = () => {
@@ -149,221 +150,250 @@ function geraResult() {
     showTimeNow()
     setInterval(showTimeNow, 1000);
 
+    var globalDatasSelect = [];
+    var globalDatasSelectDispositivo = [];
+
+
     function montarSelectDispositivo() {
 
-var idUsuarioVar = sessionStorage.ID_USUARIO;
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-fetch("/graficos/montarSelectDispositivo", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        idUsuarioServer: idUsuarioVar
-    })
-}).then(function (resposta) {
+        fetch("/graficos/montarSelectDispositivo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar
+            })
+        }).then(function (resposta) {
 
-    if (resposta.ok) {
-        console.log(resposta);
+            if (resposta.ok) {
+                console.log(resposta);
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-            globalDatasSelectDispositivo = json;
+                    globalDatasSelectDispositivo = json;
 
-            for (var i = 0; i < (globalDatasSelectDispositivo.length); i++) {
-                var nomeAtual = globalDatasSelectDispositivo[i].nomeDispositivo;
-                var idAtual = globalDatasSelectDispositivo[i].idDispositivo;
+                    for (var i = 0; i < (globalDatasSelectDispositivo.length); i++) {
+                        var nomeAtual = globalDatasSelectDispositivo[i].nomeDispositivo;
+                        var idAtual = globalDatasSelectDispositivo[i].idDispositivo;
 
-                sensor_select.innerHTML += `<option value="${idAtual}">${nomeAtual}</option>`
+                        sensor_select.innerHTML += `<option value="${idAtual}">${nomeAtual}</option>`
 
+                    }
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar montar o select!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
             }
 
-        });
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
-    } else {
-
-        console.log("Houve um erro ao tentar montar o select!");
-
-        resposta.text().then(texto => {
-            console.error(texto);
-        });
+        return false;
     }
 
-}).catch(function (erro) {
-    console.log(erro);
-})
+    function montarSelect() {
 
-return false;
-}
+        var idSensorVar = sensor_select.value;
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-function montarSelect() {
+        fetch("/graficos/montarSelect", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuarioVar,
+                idSensorServer: idSensorVar
+            })
+        }).then(function (resposta) {
 
-var idSensorVar = sensor_select.value;
-var idUsuarioVar = sessionStorage.ID_USUARIO;
+            if (resposta.ok) {
+                console.log(resposta);
 
-fetch("/graficos/montarSelect", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        idUsuarioServer: idUsuarioVar,
-        idSensorServer: idSensorVar
-    })
-}).then(function (resposta) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-    if (resposta.ok) {
-        console.log(resposta);
+                    globalDatasSelect = json;
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+                    for (var i = 0; i < (globalDatasSelect.length); i++) {
+                        var dataAtual = globalDatasSelect[i].dataMedida;
 
-            globalDatasSelect = json;
+                        select_dia.innerHTML += `<option value="${dataAtual}">${dataAtual}</option>`
 
-            for (var i = 0; i < (globalDatasSelect.length); i++) {
-                var dataAtual = globalDatasSelect[i].dataMedida;
+                    }
 
-                select_dia.innerHTML += `<option value="${dataAtual}">${dataAtual}</option>`
+                });
 
+            } else {
+
+                console.log("Houve um erro ao tentar montar o select!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
             }
 
-        });
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
-    } else {
-
-        console.log("Houve um erro ao tentar montar o select!");
-
-        resposta.text().then(texto => {
-            console.error(texto);
-        });
+        return false;
     }
 
-}).catch(function (erro) {
-    console.log(erro);
-})
+    var dadosHistoricoDiario; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+    function historicoDiario() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
 
-return false;
-}
+        esquerda.style.display = "flex";
 
-var dadosHistoricoDiario; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
-function historicoDiario() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+        var dataVar = select_dia.value;
 
-esquerda.style.display = "flex";
+        var [dia, mes, ano] = dataVar.split('/')
 
-var dataVar = select_dia.value;
+        var dataVar = `${ano}-${mes}-${dia}`;
 
-// Dividindo a data em dia, mês e ano
-var partesData = dataVar.split('/');
+        console.log(dataVar);
 
-// Formatando a data no formato YYYY-MM-DD
-dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+        fetch("/graficos/historicoDiario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                dataServer: dataVar
+            })
+        }).then(function (resposta) {
 
-console.log(dataVar);
+            if (resposta.ok) {
+                console.log(resposta);
 
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-fetch("/graficos/historicoDiario", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        dataServer: dataVar
-    })
-}).then(function (resposta) {
+                    dadosHistoricoDiario = json;
+                    ajustaFormatoDiario();
+                    gerarGraficoDiario()
 
-    if (resposta.ok) {
-        console.log(resposta);
+                });
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+            } else {
 
-            dadosHistoricoDiario = json;
+                console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
 
-        });
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
 
-    } else {
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
-        console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
-
-        resposta.text().then(texto => {
-            console.error(texto);
-        });
+        return false;
     }
 
-}).catch(function (erro) {
-    console.log(erro);
-})
+    // mesma coisa aqui
+    var dadosContagemOcorrencia; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
+    function contagemOcorrencia() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
 
-return false;
-}
+        var dataVar = select_dia.value;
 
-// mesma coisa aqui
-var dadosContagemOcorrencia; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
-function contagemOcorrencia() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+        var [dia, mes, ano] = dataVar.split('/')
 
-var dataVar = select_dia.value;
+        var dataVar = `${ano}-${mes}-${dia}`;
+        console.log(dataVar);
 
-// Dividindo a data em dia, mês e ano
-var partesData = dataVar.split('/');
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-// Formatando a data no formato YYYY-MM-DD
-dataVar = partesData[2] + '-' + partesData[1].padStart(2, '0') + '-' + partesData[0].padStart(2, '0');
+        fetch("/graficos/contagemOcorrencia", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                dataServer: dataVar,
+                idUsuarioServer: idUsuarioVar
+            })
+        }).then(function (resposta) {
 
-console.log(dataVar);
-var idUsuarioVar = sessionStorage.ID_USUARIO;
+            if (resposta.ok) {
+                console.log(resposta);
 
-fetch("/graficos/contagemOcorrencia", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        dataServer: dataVar,
-        idUsuarioServer: idUsuarioVar
-    })
-}).then(function (resposta) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-    if (resposta.ok) {
-        console.log(resposta);
+                    dadosContagemOcorrencia = json;
+                    GerarGraficoContagem()
 
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+                });
 
-            dadosContagemOcorrencia = json;
+            } else {
 
-        });
+                console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
 
-    } else {
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
 
-        console.log("Houve um erro ao tentar obter os dados do grafico de historico diario");
+        }).catch(function (erro) {
+            console.log(erro);
+        })
 
-        resposta.text().then(texto => {
-            console.error(texto);
-        });
+        return false;
     }
 
-}).catch(function (erro) {
-    console.log(erro);
-})
+    function ajustaFormatoDiario() {
 
-return false;
-}
+        dadosHistoricoDiario[0].hora = `${dadosHistoricoDiario[0].hora}:00`;
+        console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`); 
+
+    }
 
 
 
-function result() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function result() {
+
+        var id = sensor_select.value;
+
        setInterval( function () {
 
            fetch("/graficos/result", {
                method: "POST",
                headers: {
                    "Content-Type": "application/json"
-                }
+                },
+                body: JSON.stringify({
+                    idServer: id
+                })
             }).then(function (resposta) {
                 
                 if (resposta.ok) {
@@ -379,6 +409,7 @@ function result() {
                             temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
                         } else if (json[0].valor < 10 || json[0].valor > 14) {
                             temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
+                            alerta.innerHTML=`<p>Caixa instável! A temeperatura chegou a ${json[0].valor}</p>`;
                         }
                         
                         
@@ -403,66 +434,91 @@ function result() {
         return false;
     }
 
-    const labels = ['04', '05', '06', '07', '08', '09'];
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Temperatura',
-            backgroundColor: '#F29F05',
-            borderColor: '#F29F05',
-            data: [16, 17, 17, 16, 16, 17]
-        }]
-    };
+    function gerarGraficoDiario() {
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
+        var dadosGrafico = [];
+        var horasGrafico = [];
+        for (var i = 0; i < dadosHistoricoDiario.length; i++) {
 
-            scales: {
-                y: {
-                    min: 0,
-                    max: 30
+            dadosGrafico.push(dadosHistoricoDiario[i].temperatura);
+            horasGrafico.push(dadosHistoricoDiario[i].hora);
+
+        }
+    
+        const data = {
+            labels: horasGrafico,
+            datasets: [{
+                label: 'Temperatura',
+                backgroundColor: '#F29F05',
+                borderColor: '#F29F05',
+                data: dadosGrafico
+            }]
+        };
+    
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+    
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 30
+                    }
                 }
             }
-        }
-    };
-    const myChart = new Chart(document.getElementById('myChart'),
-        config
-    );
-    const labels2 = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'];
+        };
+        const myChart = new Chart(document.getElementById('myChart'),
+            config
+        );
 
-    const data2 = {
-        labels: labels2,
-        datasets: [{
-            label: 'Temperatura Ultrapassou',
-            backgroundColor: '#A60303',
-            borderColor: '#A60303',
-            data: [10, 5, 6, 5, 1, 0]
-        }, {
-            label: 'Temperatura Mantida',
-            backgroundColor: '#558C03',
-            borderColor: '#558C03',
-            data: [20, 25, 24, 25, 29, 30]
-        }]
-    };
 
-    const config2 = {
-        type: 'bar',
-        data: data2,
-        options: {
 
-            scales: {
-                y: {
-                    min: 0,
-                    max: 30
+    }
+    function GerarGraficoContagem() {
+
+        var dadosGraficoOk = [];
+        var dadosGraficoAlerta = [];
+        var dia = []
+        
+        dadosGraficoOk.push(dadosContagemOcorrencia[0].OK)
+        dadosGraficoAlerta.push(dadosContagemOcorrencia[0].ALERTA)
+        dia.push(select_dia.value)
+        
+        
+    
+        const data2 = {
+            labels: dia,
+            datasets: [{
+                label: 'Temperatura Ultrapassou',
+                backgroundColor: '#A60303',
+                borderColor: '#A60303',
+                data: dadosGraficoAlerta
+            }, {
+                label: 'Temperatura Mantida',
+                backgroundColor: '#558C03',
+                borderColor: '#558C03',
+                data: dadosGraficoOk
+            }]
+        };
+    
+        const config2 = {
+            type: 'bar',
+            data: data2,
+            options: {
+    
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 30
+                    }
                 }
             }
-        }
-    };
-
-    const myChart2 = new Chart(document.getElementById('myChart2'),
-        config2
-    );
+        };
+    
+        const myChart2 = new Chart(document.getElementById('myChart2'),
+            config2
+        );
+    }
 </script>
