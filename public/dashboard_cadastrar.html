@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
 </head>
 
-<body>
+<body onload="listarFuncionarios();">
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
@@ -34,7 +34,7 @@
     <!--parte Cadastro de Funcionários-->
     <div class="corpo">
         <div class="esquerda">
-            <div class="funcionário">
+            <div class="funcionário" id="funcionario">
                 <button onclick="Func_1()">Funcionário José</button>
                 <button onclick="Func_2()">Funcionário Bianca</button>
             </div>
@@ -107,7 +107,7 @@
                         listaEmails.push(json[i].email);
                     }
 
-                    exibirListaFuncionarios();
+                    exibirListaFuncionarios(listaEmails, listaNomes);
 
                 });
 
@@ -128,9 +128,24 @@
 
     }
 
-    function exibirListaFuncionarios() {
+    function exibirListaFuncionarios(listaEmails, listaNomes) {
 
+        var funcionario = document.getElementById('funcionario');
+        funcionario.innerHTML = "";
 
+        for (var i = 0; i < listaNomes.length; i++) {
+            console.log('oi');
+            funcionario.innerHTML += `
+            <button onclick="detalharFuncionario(${listaNomes[i]})">Funcionário(a) ${listaNomes[i]}</button>
+            `;
+
+        }
+
+    }
+
+    function detalharFuncionario() {
+
+        // Criar função depois
 
     }
 </script>
