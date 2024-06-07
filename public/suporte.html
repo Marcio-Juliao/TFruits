@@ -15,11 +15,11 @@
 
     <div class="nav">
         <div class="nav_esquerda">
-        <button class="sair"><a onclick="sair()">sair</a></button>
+        <button class="Sair"><a onclick="Sair()">Sair</a></button>
         <button class="cadastrar"> <a href="dashboard_adm.html">dashboard</a></button>
-        <button class="cadastrar"><a href="dashboard_historico.html">histórico</a></button>
+        <button class="cadastrar"><a href="dashboard_historico.html">Histórico</a></button>
         <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
-        <button class="dashboard"><b>suporte</b></button>
+        <button class="dashboard"><b>Suporte</b></button>
 
         </div>
         <div class="nav_direita">
@@ -56,7 +56,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
-    function sair() {
+    function Sair() {
         sessionStorage.clear();
         window.location = "./index.html";
     }

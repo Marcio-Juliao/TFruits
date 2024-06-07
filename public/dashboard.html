@@ -17,10 +17,10 @@
 
     <div class="nav">
         <div class="nav_esquerda">
-            <button class="sair"><a onclick="sair()">sair</a></button>
+            <button class="Sair"><a onclick="Sair()">Sair</a></button>
             <button class="dashboard">dashboard</button>
-            <button class="cadastrar"><a href="dashboard_historico2.html">histórico</a></button>
-            <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+            <button class="cadastrar"><a href="dashboard_historico2.html">Histórico</a></button>
+            <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -38,7 +38,7 @@
             <div class="sensores">
                 Dispositivos
                 <select name="" id="sensor_select">
-                    <option value="#" selected disabled>selecione o sensor</option>
+                    <option value="#" selected disabled>Selecione o Sensor</option>
                 </select>
             </div>
             <div class="Temperatura">
@@ -49,14 +49,14 @@
                 </div>
             </div>
             <div class="tempo">
-                última atualização
+                Última atualização
                 <div class="style_tempo">
                     06/05/2024 <br>
                     <time>12:00:00</time>
                 </div>
             </div>
         </div>
-        <button class="result" onclick="montarSelect(); geraResult();">mostrar resultados</button>
+        <button class="result" onclick="montarSelect(); geraResult();">Mostrar Resultados</button>
         <div id="alerta">
             <p></p>
         </div>
@@ -78,23 +78,23 @@
                     <div class="result_alerta"></div>
                 </div>
                 <br><br>
-                <button onclick="historicoDiario();contagemOcorrencia();" class="result">historico diário</button>
+                <button onclick="historicoDiario();contagemOcorrencia();" class="result">Histórico Diário</button>
             </div>
             <div class="elemento_3">
-                <div class="perigo">🔴 perigo</div>
-                <div class="alerta">🟡 alerta</div>
-                <div class="ok">🟢 está bem</div>
+                <div class="perigo">🔴 Perigo</div>
+                <div class="alerta">🟡 Alerta</div>
+                <div class="ok">🟢 Está bem</div>
             </div>
         </div>
         <div class="esquerda" id="esquerda">
             <div class="gráfico_1">
-                <h1>Gráfico - temperatura diária</h1>
+                <h1>Gráfico - Média da Temperatura Diária / Hora</h1>
                 <section style="width: 90%;">
                     <canvas id="myChart"></canvas>
                 </section>
             </div>
             <div class="gráfico_2">
-                <h1>Gráfico - contagem de ocorrência mensal</h1>
+                <h1>Gráfico - Contagem de Ocorrência Diária</h1>
                 <section style="width: 90%;">
                     <canvas id="myChart2"></canvas>
                 </section>
@@ -118,7 +118,7 @@
 
     esquerda.style.display = "none";
 
-    function sair() {
+    function Sair() {
         sessionStorage.clear();
         window.location = "./index.html";
     }

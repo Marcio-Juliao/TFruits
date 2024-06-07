@@ -17,12 +17,12 @@
 
     <div class="nav">
         <div class="nav_esquerda">
-            <button class="sair"><a onclick="sair()">sair</a></button>
+            <button class="Sair"><a onclick="Sair()">Sair</a></button>
             <button class="cadastrar"> <a href="dashboard_adm.html">dashboard</a></button>
-            <button class="dashboard">histórico</button>
+            <button class="dashboard">Histórico</button>
             <button class="cadastrar"><a href="dashboard_cadastrar.html">cadastrar</a></button>
             <button class="cadastrar"><a
-                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -42,12 +42,12 @@
 </body>
 
 </html>
-<script>
+<script src="./dashboard.js">
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
-    function sair() {
+    function Sair() {
         sessionStorage.clear();
         window.location = "./index.html";
     }

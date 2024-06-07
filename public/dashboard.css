@@ -40,7 +40,7 @@ body{
     font-family: InterBold;
     font-size: 17px;
 }
-.nav .sair{
+.nav .Sair{
    
     background-color: white;
     border: #A60303 solid 2px ;
@@ -49,7 +49,7 @@ body{
     height: 40px;
    
 }
-.nav .sair a{
+.nav .Sair a{
      font-family: InterBold;
      font-size: 17px;
      color: #A60303;
