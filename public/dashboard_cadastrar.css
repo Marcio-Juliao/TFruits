@@ -116,6 +116,7 @@ body{
 .corpo .esquerda .funcionário button{
     width: 450px;
     height: 50px;
+    margin: 0.5%;
     background-color: #F29F05;
     border: #F29F05 solid 2px;
     border-radius: 10px;
@@ -123,6 +124,7 @@ body{
     font-family: InterBold;
     font-size: 20px;
     text-align: start;
+    cursor: pointer;
 }
 .corpo .esquerda .cadastrar{
     width: 400px;
@@ -210,6 +212,14 @@ body{
 .corpo_2 .direita_2 img{
     width: 500px;
     height: 100%;
+}
+
+.funcionário {
+
+overflow-y: scroll;
+width: 100%;
+height: 100%;
+
 }
 .footer{
     width: 100%;

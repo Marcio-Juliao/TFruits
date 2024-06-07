@@ -191,10 +191,7 @@ function listarFuncionarios(req, res) {
                     if (resultadolistarFuncionarios.length > 0) {
                         console.log(resultadolistarFuncionarios);
 
-                        res.json({
-                            nome: resultadolistarFuncionarios[0].nome,
-                            email: resultadolistarFuncionarios[0].email
-                        });
+                        res.json(resultadolistarFuncionarios);
                     }
                     else if (resultadolistarFuncionarios.length == 0) {
                         res.status(403).send("fkEmpresa inválida");

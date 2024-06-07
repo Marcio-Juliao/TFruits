@@ -35,8 +35,6 @@
     <div class="corpo">
         <div class="esquerda">
             <div class="funcionário" id="funcionario">
-                <button onclick="Func_1()">Funcionário José</button>
-                <button onclick="Func_2()">Funcionário Bianca</button>
             </div>
             <button class="cadastrar"><a href="dashboard_cadastrar_2.html">Adicionar Funcionário</a></button>
         </div>
@@ -136,14 +134,16 @@
         for (var i = 0; i < listaNomes.length; i++) {
             console.log('oi');
             funcionario.innerHTML += `
-            <button onclick="detalharFuncionario(${listaNomes[i]})">Funcionário(a) ${listaNomes[i]}</button>
+            <button onclick="detalharFuncionario(${listaNomes[i]}, ${listaEmails[i]})">Funcionário(a) ${listaNomes[i]}</button>
             `;
+
+            console.log(i)
 
         }
 
     }
 
-    function detalharFuncionario() {
+    function detalharFuncionario(listaNomes, listaEmails) {
 
         // Criar função depois
 
