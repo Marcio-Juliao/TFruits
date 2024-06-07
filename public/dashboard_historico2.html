@@ -45,66 +45,6 @@
 
 </html>
 
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
-
-    function Sair() {
-        sessionStorage.clear();
-        window.location = "./index.html";
-    }
-
-
-    function result() {
-
-var id = 1;
-
-setInterval(function () {
-
-    fetch("/graficos/result", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idServer: id
-        })
-    }).then(function (resposta) {
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                if (json[0].valor < 10 || json[0].valor > 14) {
-                    alerta.innerHTML += `<p>Caixa instável! A temeperatura chegou a ${json[0].valor}</p>`;
-                    
-                } 
-
-
-
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar mostrar a temperatura");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-}
-
-    , 5000)
-return false;
-}
-
+<script src="./dashboard.js">
 
 </script>

@@ -272,7 +272,7 @@ function ajustaFormatoDiario() {
 
 
 
-
+var alertas = [];
 
 
 function result() {
@@ -305,6 +305,12 @@ function result() {
                     } else if (json[0].valor < 10 || json[0].valor > 14) {
                         temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
                         alerta.innerHTML = `<p>&nbsp; Caixa instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
+                        alertas.push(json[0].valor)
+                    }
+
+                    for (var index = alertas.length; index < 0; index--) {
+
+                        div_alertas.innerHTML +=`<p>&nbsp; Caixa instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
                     }
 
 
