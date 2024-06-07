@@ -1,8 +1,9 @@
 function geraResult() {
     result();
-}
+    }
 
-esquerda.style.display = "none";
+        esquerda.style.display = "none";
+    
 
 function Sair() {
     sessionStorage.clear();
