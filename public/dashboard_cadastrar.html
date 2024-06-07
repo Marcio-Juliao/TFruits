@@ -145,10 +145,11 @@
 
     function detalharFuncionario(nome, email) {
 
-        direita.innerHTML = `
-         Funcionário ${nome} <br><br>
-            Empresa : ${sessionStorage.NOME_EMPRESA} <br>
-            Email: ${email} <br>
+        direita.innerHTML = ` <div class="div_detalhar"> 
+            Funcionário: ${nome} <br><br>
+               Empresa: ${sessionStorage.NOME_EMPRESA} <br>
+               Email: ${email} <br>
+            </div>
         `
 
         // Criar função depois
