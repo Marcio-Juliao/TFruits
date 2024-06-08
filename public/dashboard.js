@@ -260,19 +260,6 @@ function ajustaFormatoDiario() {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 var alertas = [];
 
 
@@ -342,10 +329,12 @@ function gerarGraficoDiario() {
 
     var dadosGrafico = [];
     var horasGrafico = [];
+    var constanteTemp = [];
     for (var i = 0; i < dadosHistoricoDiario.length; i++) {
 
         dadosGrafico.push(dadosHistoricoDiario[i].temperatura);
         horasGrafico.push(dadosHistoricoDiario[i].hora);
+        constanteTemp.push(12);
 
     }
 
@@ -359,7 +348,7 @@ function gerarGraficoDiario() {
         },
                 {
                     label: 'Temperatura Ideal',
-                    data: [12],
+                    data: constanteTemp,
                     fill: false,
                     backgroundColor: '#36A2EB',
                     borderColor: '#168EE0',
@@ -393,11 +382,22 @@ function GerarGraficoContagem() {
 
     var dadosGraficoOk = [];
     var dadosGraficoAlerta = [];
-    var dia = []
+    var dia = [];
+    var total = 0;
 
     dadosGraficoOk.push(dadosContagemOcorrencia[0].OK)
     dadosGraficoAlerta.push(dadosContagemOcorrencia[0].ALERTA)
+
+    total = dadosGraficoOk[0] + dadosGraficoAlerta[0];
+    
+    var porcentagemOk = [(dadosGraficoOk[0] / total) * 100];
+    var porcentagemAlerta = [(dadosGraficoAlerta[0] / total) * 100];
+    
     dia.push(select_dia.value)
+    
+    //está muito bom, mas tente manipular as variaveis porcentagemOk e porcentagemAlerta para que elas sejam exibidas em porcentagem
+    //exemplo: 50% ou 50.0% por favor, tente fazer isso. acredito que
+
 
 
 
@@ -407,12 +407,12 @@ function GerarGraficoContagem() {
             label: 'Temperatura Ultrapassou',
             backgroundColor: '#A60303',
             borderColor: '#A60303',
-            data: dadosGraficoAlerta
+            data: porcentagemAlerta
         }, {
             label: 'Temperatura Mantida',
             backgroundColor: '#558C03',
             borderColor: '#558C03',
-            data: dadosGraficoOk
+            data: porcentagemOk
         }]
     };
 
