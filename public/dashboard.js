@@ -1,9 +1,8 @@
 function geraResult() {
     result();
-    }
+}
+esquerda.style.display = "none";
 
-        esquerda.style.display = "none";
-    
 
 function Sair() {
     sessionStorage.clear();
@@ -292,13 +291,13 @@ function result() {
                         temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
                     } else if (json[0].valor < 10 || json[0].valor > 14) {
                         temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
-                        alerta.innerHTML = `<p>&nbsp; Caixa instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
+                        alerta.innerHTML = `<p>&nbsp; Caixa nº: ${id} instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
                         alertas.push(json[0].valor)
                     }
 
                     for (var index = alertas.length; index < 0; index--) {
 
-                        div_alertas.innerHTML +=`<p>&nbsp; Caixa instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
+                        div_alertas.innerHTML += `<p>&nbsp; Caixa instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
                     }
 
 
@@ -323,9 +322,12 @@ function result() {
         , 5000)
     return false;
 }
-
-
+var myChart = null;
 function gerarGraficoDiario() {
+
+    if (myChart != null) {
+        myChart.destroy();
+    }
 
     var dadosGrafico = [];
     var horasGrafico = [];
@@ -346,16 +348,16 @@ function gerarGraficoDiario() {
             borderColor: '#F29F05',
             data: dadosGrafico
         },
-                {
-                    label: 'Temperatura Ideal',
-                    data: constanteTemp,
-                    fill: false,
-                    backgroundColor: '#36A2EB',
-                    borderColor: '#168EE0',
-                    type: 'line',
-                    order: 1,
-                    pointRadius: 6
-                }]
+        {
+            label: 'Temperatura Ideal',
+            data: constanteTemp,
+            fill: false,
+            backgroundColor: '#36A2EB',
+            borderColor: '#168EE0',
+            type: 'line',
+            order: 1,
+            pointRadius: 6
+        }]
     };
 
     const config = {
@@ -371,14 +373,18 @@ function gerarGraficoDiario() {
             }
         }
     };
-    const myChart = new Chart(document.getElementById('myChart'),
-        config
-    );
 
-
+    myChart = new Chart(document.getElementById('myChart'),
+    config
+);
 
 }
+var myChart2 = null;
 function GerarGraficoContagem() {
+
+    if (myChart2 != null) {
+        myChart2.destroy();
+    }
 
     var dadosGraficoOk = [];
     var dadosGraficoAlerta = [];
@@ -389,17 +395,11 @@ function GerarGraficoContagem() {
     dadosGraficoAlerta.push(dadosContagemOcorrencia[0].ALERTA)
 
     total = dadosGraficoOk[0] + dadosGraficoAlerta[0];
-    
+
     var porcentagemOk = [(dadosGraficoOk[0] / total) * 100];
     var porcentagemAlerta = [(dadosGraficoAlerta[0] / total) * 100];
-    
+
     dia.push(select_dia.value)
-    
-    //está muito bom, mas tente manipular as variaveis porcentagemOk e porcentagemAlerta para que elas sejam exibidas em porcentagem
-    //exemplo: 50% ou 50.0% por favor, tente fazer isso. acredito que
-
-
-
 
     const data2 = {
         labels: dia,
@@ -430,7 +430,8 @@ function GerarGraficoContagem() {
         }
     };
 
-    const myChart2 = new Chart(document.getElementById('myChart2'),
-        config2
-    );
+    myChart2 = new Chart(document.getElementById('myChart2'),
+    config2
+);
+
 }
