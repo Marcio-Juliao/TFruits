@@ -13,12 +13,12 @@
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
-            <button class="sair"><a onclick="sair()">sair</a></button>
+            <button class="Sair"><a onclick="Sair()">Sair</a></button>
             <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
-            <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
+            <button class="dashboard"><a href="dashboard_historico.html">Histórico</a></button>
             <button class="cadastrar"><a>cadastrar</a></button>
             <button class="dashboard"><a
-                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -56,7 +56,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
-    function sair() {
+    function Sair() {
         sessionStorage.clear();
         window.location = "./index.html";
     }
@@ -134,7 +134,7 @@
         for (var i = 0; i < listaNomes.length; i++) {
             console.log('oi');
             funcionario.innerHTML += `
-            <button onclick="detalharFuncionario(${listaNomes[i]}, ${listaEmails[i]})">Funcionário(a) ${listaNomes[i]}</button>
+            <button onclick="detalharFuncionario('${listaNomes[i]}', '${listaEmails[i]}')">Funcionário(a) ${listaNomes[i]}</button>
             `;
 
             console.log(i)
@@ -143,7 +143,14 @@
 
     }
 
-    function detalharFuncionario(listaNomes, listaEmails) {
+    function detalharFuncionario(nome, email) {
+
+        direita.innerHTML = ` <div class="div_detalhar"> 
+            Funcionário: ${nome} <br><br>
+               Empresa: ${sessionStorage.NOME_EMPRESA} <br>
+               Email: ${email} <br>
+            </div>
+        `
 
         // Criar função depois
 

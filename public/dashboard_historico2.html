@@ -12,16 +12,16 @@
 
 </head>
 
-<body onload="result()">
+<body  onload="result()">
     <!--Nav-->
 
     <div class="nav">
         <div class="nav_esquerda">
-            <button class="sair"><a onclick="sair()">sair</a></button>
+            <button class="Sair"><a onclick="Sair()">Sair</a></button>
             <button class="cadastrar"> <a href="dashboard.html">dashboard</a></button>
-            <button class="dashboard">histórico</button>
+            <button class="dashboard">Histórico</button>
             <button class="cadastrar"><a
-                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+                    href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -34,7 +34,17 @@
         </div>
     </div>
     <div>
-        <div id="div_alerta"></div>
+        <div id="esquerda" class="tempo">
+            Última atualização
+            <div class="style_tempo">
+                06/05/2024 <br>
+                <time>12:00:00</time>
+            </div>
+            <select id="sensor_select">
+                <option value="1">sensor 22</option>
+            </select>
+        </div>
+        <div id="div_alertas"></div>
     </div>
 
     <!--Footer-->
@@ -45,66 +55,6 @@
 
 </html>
 
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
-
-    function sair() {
-        sessionStorage.clear();
-        window.location = "./index.html";
-    }
-
-
-    function result() {
-
-var id = 1;
-
-setInterval(function () {
-
-    fetch("/graficos/result", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idServer: id
-        })
-    }).then(function (resposta) {
-
-        if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-
-                if (json[0].valor < 10 || json[0].valor > 14) {
-                    alerta.innerHTML += `<p>Caixa instável! A temeperatura chegou a ${json[0].valor}</p>`;
-                    
-                } 
-
-
-
-
-            });
-
-        } else {
-
-            console.log("Houve um erro ao tentar mostrar a temperatura");
-
-            resposta.text().then(texto => {
-                console.error(texto);
-            });
-        }
-
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-}
-
-    , 5000)
-return false;
-}
-
+<script src="./dashboard.js">
 
 </script>

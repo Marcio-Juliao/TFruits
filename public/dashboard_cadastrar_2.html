@@ -13,11 +13,12 @@
     <!--nav-->
     <div class="nav">
         <div class="nav_esquerda">
-            <button class="sair"><a onclick="sair()">sair</a></button>
-            <button class="dashboard"><a href="dashboard_adm.html">dashboard</a></button>
-            <button class="dashboard"><a href="dashboard_historico.html">histórico</a></button>
-            <button class="cadastrar"><a>cadastrar</a></button>
-            <button class="dashboard"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">suporte</a></button>
+            <button class="Sair"><a onclick="Sair()">Sair</a></button>
+            <button class="dashboard"><a href="dashboard_adm.html">Dashboard</a></button>
+            <button class="dashboard"><a href="dashboard_historico.html">Histórico</a></button>
+            <button class="cadastrar"><a>Cadastrar</a></button>
+            <button class="dashboard"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
+            <button class="dashboard"><a href="dashboard_cadastrar.html">voltar</a></button>
         </div>
         <div class="nav_direita">
             <div>
@@ -59,7 +60,7 @@
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     b_empresa.innerHTML = sessionStorage.NOME_EMPRESA;
 
-    function sair() {
+    function Sair() {
         sessionStorage.clear();
         window.location = "./index.html";
     }
