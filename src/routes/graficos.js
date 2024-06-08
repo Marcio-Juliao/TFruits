@@ -25,5 +25,9 @@ router.post("/montarSelectDispositivo", function (req, res) {
     graficoController.montarSelectDispositivo(req, res);
 });
 
+router.post("/buscarMediaDiaria", function (req, res) {
+    graficoController.buscarMediaDiaria(req, res);
+});
+
 
 module.exports = router;

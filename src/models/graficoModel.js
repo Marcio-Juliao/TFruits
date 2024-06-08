@@ -76,6 +76,13 @@ function montarSelectDispositivo(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function buscarMediaDiaria(fkDispositivo, data) {
+
+  var instrucaoSql = `SELECT ROUND(AVG(valor),2) as media FROM temperaturaMedida WHERE fkDispositivo = ${fkDispositivo} AND DATE(horaMedida) = '${data}';`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
 
-module.exports = { contagemOcorrencia, historicoDiario, result, montarSelect, montarSelectDispositivo };
+module.exports = { contagemOcorrencia, historicoDiario, result, montarSelect, montarSelectDispositivo, buscarMediaDiaria};

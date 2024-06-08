@@ -38,7 +38,7 @@
     <div class="infos">
         <div class="top">
             <div class="sensores">
-                Dispositivos
+                Caixas
                 <select name="" id="sensor_select">
                     <option value="1" selected disabled>Selecione o Sensor</option>
                 </select>
@@ -65,9 +65,9 @@
     </div>
     <!--informações especifícas-->
     <div class="dispositivos" id="disp">
-        Dispositivo
+        Caixa Selecionada
     </div>
-    <div id="dados" class="dados">
+    <div id="dados" class="dados" style="display: none;">
         <div class="direita">
             <div class="elemento_1">
                 <select name="" id="select_dia">
@@ -77,7 +77,7 @@
             <div class="elemento_2">
                 Temperatura Média <br> Diária
                 <div id="temp">
-                    <div class="result_alerta"></div>
+                    <div class="result_alerta" id="result_alerta"></div>
                 </div>
                 <br><br>
                 <button onclick="historicoDiario();contagemOcorrencia();" class="result">Histórico Diário</button>

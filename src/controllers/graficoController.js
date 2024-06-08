@@ -50,11 +50,22 @@ function montarSelectDispositivo(req, res) {
 
 }
 
+function buscarMediaDiaria(req, res) {
+    var fkDispositivo = req.body.fkDispositivoServer;
+    var data = req.body.dataServer;
+
+    graficoModel.buscarMediaDiaria(fkDispositivo, data).then((resultado) => {
+        res.status(200).json(resultado);
+    });
+
+}
+
 
 module.exports = {
     historicoDiario,
     contagemOcorrencia,
     result,
     montarSelect,
-    montarSelectDispositivo
+    montarSelectDispositivo,
+    buscarMediaDiaria
 };

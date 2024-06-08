@@ -1,8 +1,6 @@
 function geraResult() {
     result();
 }
-esquerda.style.display = "none";
-
 
 function Sair() {
     sessionStorage.clear();
@@ -91,6 +89,8 @@ function montarSelectDispositivo() {
 
 function montarSelect() {
 
+    dados.style.display = "flex";
+
     var idSensorVar = sensor_select.value;
     var idUsuarioVar = sessionStorage.ID_USUARIO;
 
@@ -151,6 +151,8 @@ function montarSelect() {
 
 var dadosHistoricoDiario; // variavel global onde os dados obtidos serão armazenados, montar o grafico com essa variavel
 function historicoDiario() { //precisa de um botão embaixo do select da data tipo "exibir resultados", para que quando apertar, monte este grafico
+
+    buscarMediaDiaria();
 
     esquerda.style.display = "flex";
 
@@ -356,7 +358,7 @@ function gerarGraficoDiario() {
             borderColor: '#168EE0',
             type: 'line',
             order: 1,
-            pointRadius: 6
+            pointRadius: 3
         }]
     };
 
@@ -434,4 +436,51 @@ function GerarGraficoContagem() {
     config2
 );
 
+}
+
+function buscarMediaDiaria() {
+
+    var fkDispositivoVar = sensor_select.value;
+    var dataVar = select_dia.value;
+
+    var [dia, mes, ano] = dataVar.split('/')
+
+    var dataVar = `${ano}-${mes}-${dia}`;
+
+    fetch("/graficos/buscarMediaDiaria", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fkDispositivoServer: fkDispositivoVar,
+            dataServer: dataVar
+        })
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                result_alerta.innerHTML = `<p>Média diária: ${json[0].media}</p>`
+
+            });
+
+        } else {
+
+            console.log("Houve um erro ao tentar obter a média diária");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }

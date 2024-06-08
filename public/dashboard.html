@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="dashboard.css">
         <link rel="stylesheet" href="dashboard_dados.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="shortcut icon" href="../src/img/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 
 </head>
 
@@ -18,7 +18,7 @@
     <div class="nav">
         <div class="nav_esquerda">
             <button class="Sair"><a onclick="Sair()">Sair</a></button>
-            <button class="dashboard">dashboard</button>
+            <button class="dashboard">Dashboard</button>
             <button class="cadastrar"><a href="dashboard_historico2.html">Histórico</a></button>
             <button class="cadastrar"><a href="https://tfruitcontato.atlassian.net/servicedesk/customer/portal/2">Suporte</a></button>
         </div>
@@ -36,7 +36,7 @@
     <div class="infos">
         <div class="top">
             <div class="sensores">
-                Dispositivos
+                Caixas
                 <select name="" id="sensor_select">
                     <option value="1" selected disabled>Selecione o Sensor</option>
                 </select>
@@ -63,9 +63,9 @@
     </div>
     <!--informações especifícas-->
     <div class="dispositivos" id="disp">
-        Dispositivo
+        Caixa Selecionada
     </div>
-    <div id="dados" class="dados">
+    <div id="dados" class="dados" style="display: none;">
         <div class="direita">
             <div class="elemento_1">
                 <select name="" id="select_dia">
@@ -75,7 +75,7 @@
             <div class="elemento_2">
                 Temperatura Média <br> Diária
                 <div id="temp">
-                    <div class="result_alerta"></div>
+                    <div class="result_alerta" id="result_alerta"></div>
                 </div>
                 <br><br>
                 <button onclick="historicoDiario();contagemOcorrencia();" class="result">Histórico Diário</button>
