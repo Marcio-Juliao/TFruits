@@ -429,7 +429,7 @@ function GerarGraficoContagem() {
             scales: {
                 y: {
                     min: 0,
-                    max: 30
+                    max: 100
                 }
             }
         }
@@ -468,7 +468,7 @@ function buscarMediaDiaria() {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                result_alerta.innerHTML = `<p>Média diária: ${json[0].media}</p>`
+                result_alerta.innerHTML = `<p> &nbsp; Média diária: ${json[0].media} &nbsp;</p>`
 
             });
 
