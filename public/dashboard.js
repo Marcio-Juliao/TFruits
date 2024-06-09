@@ -32,7 +32,7 @@ const showTimeNow = () => {
 }
 //executando a funcao a cada 1 segundo
 showTimeNow()
-setInterval(showTimeNow, 1000);
+setInterval(showTimeNow, 4000);
 
 var globalDatasSelect = [];
 var globalDatasSelectDispositivo = [];
@@ -256,9 +256,12 @@ function contagemOcorrencia() { //precisa de um botão embaixo do select da data
 
 function ajustaFormatoDiario() {
 
-    dadosHistoricoDiario[0].hora = `${dadosHistoricoDiario[0].hora}:00`;
+    for (var i = 0; i < dadosHistoricoDiario.length; i++) {
+
+    dadosHistoricoDiario[i].hora = `${dadosHistoricoDiario[i].hora}:00`;
     console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`);
 
+    }
 }
 
 var alertas = [];
@@ -287,11 +290,11 @@ function result() {
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    if (json[0].valor >= 12 && json[0].valor < 13) {
+                    if (json[0].valor >= 11 && json[0].valor < 14) {
                         temperatura.innerHTML = `<div class="style_temp_ok">${json[0].valor}</div>`;
-                    } else if (json[0].valor >= 10 && json[0].valor <= 14) {
+                    } else if (json[0].valor >= 10 && json[0].valor < 11 || json[0].valor >= 14 && json[0].valor <= 15) {
                         temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
-                    } else if (json[0].valor < 10 || json[0].valor > 14) {
+                    } else if (json[0].valor < 10 || json[0].valor > 15) {
                         temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
                         alerta.innerHTML = `<p>&nbsp; Caixa nº: ${id} instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
                         alertas.push(json[0].valor)

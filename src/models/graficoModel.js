@@ -28,7 +28,7 @@ function contagemOcorrencia(data, idUsuario) {
      FROM temperaturaMedida tm
      JOIN dispositivo d ON tm.fkDispositivo = d.idDispositivo
      JOIN usuario u ON d.fkEmpresa = u.fkEmpresa
-     WHERE (tm.valor > 11 AND tm.valor < 13)
+     WHERE (tm.valor >= 11 AND tm.valor <= 13)
        AND (DATE(tm.horaMedida) = '${data}')
        AND (u.idUsuario = ${idUsuario})) AS 'OK',
        
@@ -36,7 +36,7 @@ function contagemOcorrencia(data, idUsuario) {
      FROM temperaturaMedida tm
      JOIN dispositivo d ON tm.fkDispositivo = d.idDispositivo
      JOIN usuario u ON d.fkEmpresa = u.fkEmpresa
-     WHERE (tm.valor >= 13 OR tm.valor <= 11)
+     WHERE (tm.valor > 13 OR tm.valor < 11)
        AND (DATE(tm.horaMedida) = '${data}')
        AND (u.idUsuario = ${idUsuario})) AS 'ALERTA';
   `;
