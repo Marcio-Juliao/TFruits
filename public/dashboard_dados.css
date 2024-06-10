@@ -61,17 +61,17 @@
     align-items: center;
     justify-content: center;
 }
-.dados .elemento_3 {
+.elemento_3 {
     font-family: InterBold;
     font-size: 15px; 
 }
-.dados .elemento_3 .perigo{
+.elemento_3 .perigo{
     color: #A60303;
 }
-.dados .elemento_3 .alerta{
+.elemento_3 .alerta{
     color: #F29F05;
 }
-.dados .elemento_3 .ok{
+.elemento_3 .ok{
     color: #558C03;
 }
 .dados .esquerda {
