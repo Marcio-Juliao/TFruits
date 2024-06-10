@@ -91,7 +91,15 @@ function montarSelect() {
 
     dados.style.display = "flex";
 
-    var idSensorVar = sensor_select.value;
+    var idSensorVar;
+
+
+    if (sensor_select.value == "#1") {
+        idSensorVar = '1';
+    } else {
+        idSensorVar = sensor_select.value;
+    }
+
     var idUsuarioVar = sessionStorage.ID_USUARIO;
 
     fetch("/graficos/montarSelect", {
@@ -258,8 +266,8 @@ function ajustaFormatoDiario() {
 
     for (var i = 0; i < dadosHistoricoDiario.length; i++) {
 
-    dadosHistoricoDiario[i].hora = `${dadosHistoricoDiario[i].hora}:00`;
-    console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`);
+        dadosHistoricoDiario[i].hora = `${dadosHistoricoDiario[i].hora}:00`;
+        console.log(`ajustado!: ${dadosHistoricoDiario[0].hora}`);
 
     }
 }
@@ -269,7 +277,12 @@ var alertas = [];
 
 function result() {
 
-    var id = sensor_select.value;
+    if (sensor_select.value == "#1") {
+        var id = '1';
+    } else {
+        var id = sensor_select.value;
+    }
+
 
     setInterval(function () {
 
@@ -290,14 +303,22 @@ function result() {
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    if (json[0].valor >= 11 && json[0].valor < 14) {
-                        temperatura.innerHTML = `<div class="style_temp_ok">${json[0].valor}</div>`;
-                    } else if (json[0].valor >= 10 && json[0].valor < 11 || json[0].valor >= 14 && json[0].valor <= 15) {
-                        temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
-                    } else if (json[0].valor < 10 || json[0].valor > 15) {
-                        temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
-                        alerta.innerHTML = `<p>&nbsp; Caixa nº: ${id} instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
-                        alertas.push(json[0].valor)
+
+                    if (sensor_select.value == "#1") {
+                        if (json[0].valor < 10 || json[0].valor > 15) {
+                            alerta.innerHTML = `<p>&nbsp; Caixa nº: ${id} instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
+                            alertas.push(json[0].valor)
+                        }
+                    } else {
+                        if (json[0].valor >= 11 && json[0].valor < 14) {
+                            temperatura.innerHTML = `<div class="style_temp_ok">${json[0].valor}</div>`;
+                        } else if (json[0].valor >= 10 && json[0].valor < 11 || json[0].valor >= 14 && json[0].valor <= 15) {
+                            temperatura.innerHTML = `<div class="style_temp_alerta">${json[0].valor}</div>`;
+                        } else if (json[0].valor < 10 || json[0].valor > 15) {
+                            temperatura.innerHTML = `<div class="style_temp_perigo">${json[0].valor}</div>`;
+                            alerta.innerHTML = `<p>&nbsp; Caixa nº: ${id} instável! A temperatura chegou a ${json[0].valor} &nbsp;</p>`;
+                            alertas.push(json[0].valor)
+                        }
                     }
 
                     for (var index = alertas.length; index < 0; index--) {
@@ -380,8 +401,8 @@ function gerarGraficoDiario() {
     };
 
     myChart = new Chart(document.getElementById('myChart'),
-    config
-);
+        config
+    );
 
 }
 var myChart2 = null;
@@ -436,8 +457,8 @@ function GerarGraficoContagem() {
     };
 
     myChart2 = new Chart(document.getElementById('myChart2'),
-    config2
-);
+        config2
+    );
 
 }
 
